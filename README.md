@@ -9,6 +9,7 @@ Work in progress...
 
 The <b>Philosophers</b> project tackles the [classic dining philosophers problem](https://en.wikipedia.org/wiki/Dining_philosophers_problem) by implementing concurrent programming techniques.
 The aim of the project is to find a soltuion using only threads and mutexes to avoid deadlock and data race.
+
 </p>
 
 <div align="center">
