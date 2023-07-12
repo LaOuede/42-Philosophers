@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/11 13:52:11 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/12 13:23:49 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
+# include <limits.h>
+# include <stdbool.h>
 # include <stdio.h>
+# include <unistd.h>
 
 /* ---------------------COLORS--------------------- */
 # define KNRM "\x1B[m"
@@ -31,6 +34,10 @@
 # define KWHT "\x1B[37m"
 # define RT   "\033[1;0m"
 
+/* --------------------ERROR MESSAGE--------------------- *///
+# define ERR_ARGS	"Usage : ./philo <nb_philos> <time_to_die> \
+<time_to_eat> <time_to_sleep> [nb_meals]\n"
+
 /* -------------------STRUCTURES------------------- */
 
 /* -------------PARSING & INITIALIZING------------- */
@@ -38,6 +45,9 @@
 /* ------------------CLEANING UP------------------- */
 
 /* ---------------------UTILS---------------------- */
-int	main(void);
+int		ft_atoi(const char *str);
+bool	is_digit(char *str);
+bool	parsing(int argc, char **argv);
+void	putstr_fd(char const *s, int fd);
 
 #endif

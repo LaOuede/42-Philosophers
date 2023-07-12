@@ -6,7 +6,7 @@
 #    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/07/11 14:26:27 by gle-roux         ###   ########.fr        #
+#    Updated: 2023/07/12 13:22:22 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,10 @@ NAME		=	philo
 
 # Dir. and files names
 SRCS_DIR	=	./src/
-SRCS_LIST	=	main.c
+SRCS_LIST	=	clean.c \
+				main.c \
+				parsing.c \
+				utils.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))
 
 OBJS_DIR	=	./obj/
@@ -88,7 +91,7 @@ USER		=	$(shell whoami)
 
 # Executable creation
 all: dir $(NAME)
-	@echo $Y"$$BANNER1"$W
+	@echo $Y"$$BANNER1\n"$W
 	@echo "			...powered by $Ygle-roux🐭$W"
 	@echo "				...evaluated by $Y$(USER)\n\n$W"
 
@@ -98,14 +101,13 @@ dir:
 
 # Compilation
 $(NAME): $(OBJS)
-	@echo "$(ERASE_LINE)$W\n-------------------- Compilation is $Gdone ✅ $W-------------------"
+	@echo "$(ERASE_LINE)$W\n>>>>>>>>>>>>>>>>>>> $YCompilation $Wis $Gdone ✅ $W<<<<<<<<<<<<<<<<<<<<"
 	@$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
 	@echo "\n-------------- If help is needed, type $Ymake help $W--------------"
 	@echo "\n>>>>>>>>>>>>>>>>>>> $YPHILOSOPHERS $Wis $Gready ✅$W <<<<<<<<<<<<<<<<<<"
 
 # Create all files .o (object) from files .c (source code)
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
-	@echo "\n\n$W>>>>>>>>>>>>>>>>>>>>>>> $YCONFIGURATION $W<<<<<<<<<<<<<<<<<<<<<<<<<"	
 	@printf "$(ERASE_LINE) $GCompiling : $Z$(notdir $<)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
