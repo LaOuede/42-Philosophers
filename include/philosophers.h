@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/12 13:23:49 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:19:50 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <unistd.h>
+
+/* ---------------------UTILS--------------------- */
+# define DEBUG 1
 
 /* ---------------------COLORS--------------------- */
 # define KNRM "\x1B[m"
@@ -39,15 +42,34 @@
 <time_to_eat> <time_to_sleep> [nb_meals]\n"
 
 /* -------------------STRUCTURES------------------- */
+enum e_args_type
+{
+	NB_PHILO = 0,
+	MS_DIE = 1,
+	MS_EAT = 2,
+	MS_SLEEP = 3,
+	NB_MEALS = 4,
+};
+
+typedef struct s_param
+{
+	int	nb_philo;
+	int	ms_die;
+	int	ms_eat;
+	int	ms_sleep;
+	int	nb_meals;
+}t_param;
+
 
 /* -------------PARSING & INITIALIZING------------- */
+void	init_param(t_param *param, int argc, char **argv);
+bool	parsing(int argc, char **argv);
 
 /* ------------------CLEANING UP------------------- */
 
 /* ---------------------UTILS---------------------- */
 int		ft_atoi(const char *str);
 bool	is_digit(char *str);
-bool	parsing(int argc, char **argv);
 void	putstr_fd(char const *s, int fd);
 
 #endif
