@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/12 15:19:50 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:22:11 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,6 @@
 <time_to_eat> <time_to_sleep> [nb_meals]\n"
 
 /* -------------------STRUCTURES------------------- */
-enum e_args_type
-{
-	NB_PHILO = 0,
-	MS_DIE = 1,
-	MS_EAT = 2,
-	MS_SLEEP = 3,
-	NB_MEALS = 4,
-};
-
 typedef struct s_param
 {
 	int	nb_philo;
