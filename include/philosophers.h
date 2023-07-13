@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/13 15:00:40 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:37:17 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void		*routine(void *arg);
 void		*routine_alone(void *arg);
 
 /* -------------PARSING & INITIALIZING------------- */
-void		create_philos(t_waiter *waiter);
 int			create_threads(t_waiter *waiter);
 t_waiter	*init_waiter(void);
 t_param		*init_param(int argc, char **argv);

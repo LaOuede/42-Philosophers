@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/13 14:08:48 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:39:10 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,23 @@
 
 t_philo	*init_philo(t_waiter *waiter)
 {
+	int				i;
 	static t_philo	*philo;
 
+	i = 0;
 	if (!philo)
+	{
 		philo = ft_calloc(waiter->param->nb_philo, sizeof(t_philo));
+		while (++i < waiter->param->nb_philo)
+		{
+			philo[i].idx = i;
+			philo[i].eating = 0;
+			philo[i].thinking = 0;
+			philo[i].sleeping = 0;
+			philo[i].dead = 0;
+			philo[i].meals = 0;
+		}
+	}
 	return (philo);
 }
 
@@ -56,6 +69,9 @@ t_waiter	*init_waiter(void)
 		waiter = ft_calloc(1, sizeof(t_waiter));
 		waiter->param = NULL;
 		waiter->philo = NULL;
+		pthread_mutex_init(&waiter->start, NULL);
+		pthread_mutex_init(&waiter->eat, NULL);
+		pthread_mutex_init(&waiter->print, NULL);
 		waiter->all_alive = 0;
 		waiter->sated = 0;
 	}

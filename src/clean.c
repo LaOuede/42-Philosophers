@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/13 14:55:53 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:40:14 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void	clean_n_quit(t_waiter *waiter)
 		waiter->param = free_null(waiter->param);
 	if (waiter->philo)
 		waiter->philo = free_null(waiter->philo);
+	pthread_mutex_destroy(&waiter->print);
 	waiter = free_null(waiter);
 }
