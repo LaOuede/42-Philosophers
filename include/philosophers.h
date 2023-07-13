@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/12 15:22:11 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:00:40 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define PHILOSOPHERS_H
 
 # include <limits.h>
+# include <pthread.h>
 # include <stdbool.h>
 # include <stdio.h>
+# include <stdlib.h>
 # include <unistd.h>
 
 /* ---------------------UTILS--------------------- */
@@ -42,6 +44,26 @@
 <time_to_eat> <time_to_sleep> [nb_meals]\n"
 
 /* -------------------STRUCTURES------------------- */
+
+typedef struct s_fork
+{
+	pthread_mutex_t	fork;
+	bool			free;
+	bool			waiting;
+	bool			taken;
+}t_fork;
+
+typedef struct s_philo
+{
+	int			idx;
+	pthread_t	thread;
+	bool		eating;
+	bool		thinking;
+	bool		sleeping;
+	bool		dead;
+	int			meals;
+}t_philo;
+
 typedef struct s_param
 {
 	int	nb_philo;
@@ -51,16 +73,39 @@ typedef struct s_param
 	int	nb_meals;
 }t_param;
 
+typedef struct s_waiter
+{
+	t_param			*param;
+	t_philo			*philo;
+	pthread_mutex_t	start;
+	pthread_mutex_t	eat;
+	pthread_mutex_t	print;
+	bool			all_alive;
+	bool			sated;
+
+}t_waiter;
+
+/* ------------------- ROUTINE -------------------- */
+int			the_one_and_only(t_waiter *waiter);
+void		*routine(void *arg);
+void		*routine_alone(void *arg);
 
 /* -------------PARSING & INITIALIZING------------- */
-void	init_param(t_param *param, int argc, char **argv);
-bool	parsing(int argc, char **argv);
+void		create_philos(t_waiter *waiter);
+int			create_threads(t_waiter *waiter);
+t_waiter	*init_waiter(void);
+t_param		*init_param(int argc, char **argv);
+t_philo		*init_philo(t_waiter *ms);
+bool		parsing(int argc, char **argv);
 
 /* ------------------CLEANING UP------------------- */
+void		clean_n_quit(t_waiter *ms);
+void		*free_null(void *ptr);
 
 /* ---------------------UTILS---------------------- */
-int		ft_atoi(const char *str);
-bool	is_digit(char *str);
-void	putstr_fd(char const *s, int fd);
+int			ft_atoi(const char *str);
+void		*ft_calloc(size_t count, size_t size);
+bool		is_digit(char *str);
+void		putstr_fd(char const *s, int fd);
 
 #endif

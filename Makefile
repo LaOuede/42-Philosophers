@@ -6,7 +6,7 @@
 #    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/07/12 15:22:48 by gle-roux         ###   ########.fr        #
+#    Updated: 2023/07/13 14:26:17 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,9 +67,11 @@ NAME		=	philo
 
 # Dir. and files names
 SRCS_DIR	=	./src/
-SRCS_LIST	=	initialization.c \
+SRCS_LIST	=	clean.c \
+				initialization.c \
 				main.c \
 				parsing.c \
+				routine.c \
 				utils.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))
 

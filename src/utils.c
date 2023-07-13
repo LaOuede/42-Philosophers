@@ -6,11 +6,25 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/12 15:15:03 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/13 09:31:40 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	size_t	len;
+	char	*dest;
+
+	len = size * count;
+	dest = (void *)malloc(len);
+	if (!dest)
+		return (NULL);
+	while (len-- > 0)
+		dest[len] = 0;
+	return (dest);
+}
 
 int	ft_atoi(const char *str)
 {
