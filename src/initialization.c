@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/13 16:39:10 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:42:34 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_philo	*init_philo(t_waiter *waiter)
 		while (++i < waiter->param->nb_philo)
 		{
 			philo[i].idx = i;
+			philo[i].thread = 0;
 			philo[i].eating = 0;
 			philo[i].thinking = 0;
 			philo[i].sleeping = 0;
