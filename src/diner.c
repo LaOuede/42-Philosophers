@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/17 16:35:18 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/17 17:29:55 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,11 @@ bool	create_threads(t_waiter *waiter)
 
 	i = -1;
 	pthread_mutex_lock(&waiter->start);
-	if (waiter->param->nb_philo == 1)
-		the_one_and_only(waiter);
-	else
+	while (++i < waiter->param->nb_philo)
 	{
-		while (++i < waiter->param->nb_philo)
-		{
-			if (pthread_create(&waiter->philo[0].thread, NULL, \
-				&routine_philos, &waiter->philo[i]))
-				return (false);
-		}
+		if (pthread_create(&waiter->philo[0].thread, NULL, \
+			&routine_philos, &waiter->philo[i]))
+			return (false);
 	}
 	pthread_mutex_unlock(&waiter->start);
 	pthread_mutex_destroy(&waiter->start);
@@ -82,9 +77,14 @@ int	diner(t_waiter *waiter)
 	gettimeofday(waiter->start_time, NULL);
 	if (DEBUG)
 		print_time();
-	if (create_threads(waiter) == true)
-		if (death_flag(waiter) == false)
-			if (join_threads(waiter) == true)
-				return (0);
+	if (waiter->param->nb_philo == 1)
+	{
+		the_one_and_only(waiter);
+		return (0);
+	}
+	else if (create_threads(waiter) == true)
+			if (death_flag(waiter) == false)
+				if (join_threads(waiter) == true)
+					return (0);
 	return (1);
 }
