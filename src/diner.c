@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/17 16:31:40 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/17 16:35:18 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	death_flag(t_waiter *waiter)
 		printf("waiter->all_alive = %d\n", waiter->all_alive);
 	if (waiter->all_alive == false)
 	{
-		i = 0;
+		i = -1;
 		while (++i < waiter->param->nb_philo)
 			pthread_detach(waiter->philo[i].thread);
 		return (true);
