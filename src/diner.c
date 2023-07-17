@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/17 16:17:45 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/17 16:31:40 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ bool	death_flag(t_waiter *waiter)
 		i = 0;
 		while (++i < waiter->param->nb_philo)
 			pthread_detach(waiter->philo[i].thread);
-		return (false);
+		return (true);
 	}
 	pthread_mutex_unlock(&waiter->dead);
 	if (DEBUG)
-		printf(KGRN"True\n"RT);
-	return (true);
+		printf(KGRN"False\n"RT);
+	return (false);
 }
 
 bool	create_threads(t_waiter *waiter)
@@ -83,7 +83,7 @@ int	diner(t_waiter *waiter)
 	if (DEBUG)
 		print_time();
 	if (create_threads(waiter) == true)
-		if (death_flag(waiter) == true)
+		if (death_flag(waiter) == false)
 			if (join_threads(waiter) == true)
 				return (0);
 	return (1);
