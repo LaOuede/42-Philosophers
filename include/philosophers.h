@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/13 16:37:17 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/17 16:19:12 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/time.h>
 # include <unistd.h>
 
 /* ---------------------UTILS--------------------- */
@@ -75,10 +76,12 @@ typedef struct s_param
 
 typedef struct s_waiter
 {
+	struct timeval	*start_time;
 	t_param			*param;
 	t_philo			*philo;
 	pthread_mutex_t	start;
 	pthread_mutex_t	eat;
+	pthread_mutex_t	dead;
 	pthread_mutex_t	print;
 	bool			all_alive;
 	bool			sated;
@@ -86,12 +89,13 @@ typedef struct s_waiter
 }t_waiter;
 
 /* ------------------- ROUTINE -------------------- */
+int			diner(t_waiter *waiter);
+void		*routine_philos(void *arg);
+void		*routine_philo_alone(void *arg);
 int			the_one_and_only(t_waiter *waiter);
-void		*routine(void *arg);
-void		*routine_alone(void *arg);
 
 /* -------------PARSING & INITIALIZING------------- */
-int			create_threads(t_waiter *waiter);
+bool		create_threads(t_waiter *waiter);
 t_waiter	*init_waiter(void);
 t_param		*init_param(int argc, char **argv);
 t_philo		*init_philo(t_waiter *ms);
@@ -106,5 +110,8 @@ int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 bool		is_digit(char *str);
 void		putstr_fd(char const *s, int fd);
+
+/* ---------------------DEBUG---------------------- */
+int			print_time(void);
 
 #endif

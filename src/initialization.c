@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/13 16:42:34 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/17 16:13:04 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ t_param	*init_param(int argc, char **argv)
 		printf(" * param->ms_eat = %d\n", param->ms_eat);
 		printf(" * param->ms_sleep = %d\n", param->ms_sleep);
 		printf(" * param->nb_meals = %d\n", param->nb_meals);
-		printf(KYEL "--------------------------------\n" RT);
 	}
 	return (param);
 }
@@ -68,13 +67,15 @@ t_waiter	*init_waiter(void)
 	if (!waiter)
 	{
 		waiter = ft_calloc(1, sizeof(t_waiter));
+		waiter->start_time = ft_calloc(1, sizeof(struct timeval));
 		waiter->param = NULL;
 		waiter->philo = NULL;
 		pthread_mutex_init(&waiter->start, NULL);
 		pthread_mutex_init(&waiter->eat, NULL);
+		pthread_mutex_init(&waiter->dead, NULL);
 		pthread_mutex_init(&waiter->print, NULL);
-		waiter->all_alive = 0;
-		waiter->sated = 0;
+		waiter->all_alive = true;
+		waiter->sated = false;
 	}
 	return (waiter);
 }
