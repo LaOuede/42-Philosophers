@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/17 16:08:58 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/17 16:33:10 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,10 @@ int	print_time(void)
 	struct timeval tv;
 	time_t t;
 	struct tm *info;
-	char buffer[64];
  
 	gettimeofday(&tv, NULL);
 	t = tv.tv_sec;
 	info = localtime(&t);
 	printf("%s",asctime (info));
-	strftime (buffer, sizeof buffer, "Today is %A, %B %d.\n", info);
-	printf("%s",buffer);
 	return 0;
 }
