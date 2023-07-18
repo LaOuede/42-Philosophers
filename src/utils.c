@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 12:57:07 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/18 15:01:14 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,19 @@ bool	is_digit(char *str)
 	return (true);
 }
 
-int	print_time(void)
+int	timestamp_in_ms(void)
 {
-	time_t			t;
-	struct timeval	tv;
-	struct tm		*info;
+	time_t			time;
+	t_waiter		*waiter;
+	struct timeval	time_now;
 
 	printf(KYEL "---------- "KGRN"START_TIME"KYEL" ----------\n" RT);
-	gettimeofday(&tv, NULL);
-	t = tv.tv_sec;
-	info = localtime(&t);
-	printf("%s", asctime(info));
-	return (0);
+	waiter = init_waiter();
+	gettimeofday(&time_now, NULL);
+	time = ((time_now.tv_sec - waiter->start_time->tv_sec) * 1000 + \
+		(time_now.tv_usec - waiter->start_time->tv_usec) / 1000);
+	printf("start_time = %ld\n", ((waiter->start_time->tv_sec) * 1000 + (waiter->start_time->tv_usec) / 1000));
+	printf("time_now = %ld\n", (time_now.tv_sec * 1000 + time_now.tv_usec / 1000));
+	printf("dif_time = %ld ms\n", time);
+	return (time);
 }

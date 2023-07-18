@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 12:58:57 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/18 13:13:38 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,6 @@ bool		is_digit(char *str);
 void		ft_putstr_fd(char *s, int fd);
 
 /* ---------------------DEBUG---------------------- */
-int			print_time(void);
+int			timestamp_in_ms(void);
 
 #endif
