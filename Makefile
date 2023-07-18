@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+         #
+#    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/07/17 20:25:33 by gwenolalero      ###   ########.fr        #
+#    Updated: 2023/07/18 12:53:30 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRCS_LIST	=	clean.c \
 				initialization.c \
 				main.c \
 				parsing.c \
+				print.c \
 				routine.c \
 				utils.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))

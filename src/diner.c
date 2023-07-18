@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   diner.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/17 20:22:36 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/18 12:00:06 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ bool	join_threads(t_waiter *waiter)
 				return (false);
 	}
 	if (DEBUG)
-		printf(KGRN"True\n"RT);
+		printf(KGRN"join_threads = true\n"RT);
 	return (true);
 }
 
@@ -48,7 +48,7 @@ bool	death_flag(t_waiter *waiter)
 	}
 	pthread_mutex_unlock(&waiter->dead);
 	if (DEBUG)
-		printf(KGRN"False\n"RT);
+		printf(KGRN"death_flag = = false\n"RT);
 	return (false);
 }
 
@@ -60,16 +60,19 @@ bool	create_threads(t_waiter *waiter)
 		printf(KYEL "------- "KGRN"THREADS_CREATION"KYEL" -------\n" RT);
 	i = -1;
 	pthread_mutex_lock(&waiter->start);
+	//gettime
 	while (++i < waiter->param->nb_philo)
 	{
+		//time = start
+		//time = eat
 		if (pthread_create(&waiter->philo[0].thread, NULL, \
 			&routine_philos, &waiter->philo[i]))
 			return (false);
 	}
 	pthread_mutex_unlock(&waiter->start);
-	pthread_mutex_destroy(&waiter->start);
+	//pthread_mutex_destroy(&waiter->start);
 	if (DEBUG)
-		printf(KGRN"True\n"RT);
+		printf(KGRN"create_threads = true\n"RT);
 	return (true);
 }
 

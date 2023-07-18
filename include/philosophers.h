@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 09:13:31 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/18 11:55:15 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@
 /* -------------------STRUCTURES------------------- */
 typedef struct s_fork
 {
-	pthread_mutex_t	fork;
+	pthread_mutex_t	his_fork;
+	pthread_mutex_t	*nbg_fork;
 	bool			free;
 	bool			waiting;
 	bool			taken;

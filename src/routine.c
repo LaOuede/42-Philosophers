@@ -15,8 +15,12 @@
 void	*routine_philos(void *arg)
 {
 	t_philo		*philo;
-
+	t_waiter	*waiter;
+	
 	philo = (t_philo *)arg;
+	waiter = init_waiter();
+	pthread_mutex_lock(&waiter->start);
+	pthread_mutex_unlock(&waiter->start);
 	printf("Philo %d created\n", philo->idx);
 	return (0);
 }
