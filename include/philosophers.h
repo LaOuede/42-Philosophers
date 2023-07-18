@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 11:55:15 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/18 12:58:57 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void		*free_null(void *ptr);
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 bool		is_digit(char *str);
-void		putstr_fd(char const *s, int fd);
+void		ft_putstr_fd(char *s, int fd);
 
 /* ---------------------DEBUG---------------------- */
 int			print_time(void);
