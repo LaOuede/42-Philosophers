@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/17 17:29:55 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/17 20:22:36 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	join_threads(t_waiter *waiter)
 	if (DEBUG)
 		printf(KYEL "--------- "KGRN"JOIN_THREADS"KYEL" ---------\n" RT);
 	i = -1;
-		while (i-- >= 0)
+	while (i-- >= 0)
 	{
 		if (waiter->philo[i].thread)
 			if (pthread_join(waiter->philo[i].thread, NULL))
@@ -54,10 +54,10 @@ bool	death_flag(t_waiter *waiter)
 
 bool	create_threads(t_waiter *waiter)
 {
-	if (DEBUG)
-		printf(KYEL "------- "KGRN"THREADS_CREATION"KYEL" -------\n" RT);
 	int	i;
 
+	if (DEBUG)
+		printf(KYEL "------- "KGRN"THREADS_CREATION"KYEL" -------\n" RT);
 	i = -1;
 	pthread_mutex_lock(&waiter->start);
 	while (++i < waiter->param->nb_philo)
@@ -72,6 +72,7 @@ bool	create_threads(t_waiter *waiter)
 		printf(KGRN"True\n"RT);
 	return (true);
 }
+
 int	diner(t_waiter *waiter)
 {
 	gettimeofday(waiter->start_time, NULL);
@@ -83,8 +84,8 @@ int	diner(t_waiter *waiter)
 		return (0);
 	}
 	else if (create_threads(waiter) == true)
-			if (death_flag(waiter) == false)
-				if (join_threads(waiter) == true)
-					return (0);
+		if (death_flag(waiter) == false)
+			if (join_threads(waiter) == true)
+				return (0);
 	return (1);
 }

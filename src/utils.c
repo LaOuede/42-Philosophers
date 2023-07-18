@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/17 16:33:10 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/17 20:24:17 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,14 @@ void	putstr_fd(char const *s, int fd)
 
 int	print_time(void)
 {
+	time_t			t;
+	struct timeval	tv;
+	struct tm		*info;
+
 	printf(KYEL "---------- "KGRN"START_TIME"KYEL" ----------\n" RT);
-	struct timeval tv;
-	time_t t;
-	struct tm *info;
- 
 	gettimeofday(&tv, NULL);
 	t = tv.tv_sec;
 	info = localtime(&t);
-	printf("%s",asctime (info));
-	return 0;
+	printf("%s", asctime(info));
+	return (0);
 }

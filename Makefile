@@ -6,7 +6,7 @@
 #    By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/07/17 15:05:47 by gwenolalero      ###   ########.fr        #
+#    Updated: 2023/07/17 20:25:33 by gwenolalero      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,7 +116,7 @@ $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(HEADER)
 
 # Remove objects
 clean:
-	@echo "\n\n$W>>>>>>>>>>>>>>>>>>>>>>>>>>> $YCLEANING $W<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>>>>> $YCLEANING $W<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
 	@$(RM) $(OBJS_DIR)
 	@echo "$W------------------ $(NAME): $(OBJS_DIR) was $Rdeleted ❌$W----------------"
 
@@ -140,9 +140,9 @@ pdf:
 
 # Run norminette
 norm :
-	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>>>> $YNORMINETTE $W<<<<<<<<<<<<<<<<<<<<<<<<<<$Z\n"
+	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>>>> $YNORMINETTE $W<<<<<<<<<<<<<<<<<<<<<<<<<<$W\n"
 	@norminette $(SRCS) $(HEADER)
-	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>> $YNORMINETTE ✅ $W<<<<<<<<<<<<<<<<<<<<<<<<<<"
+	@echo "\n$W>>>>>>>>>>>>>>>>>>>>>>>> $YNORMINETTE ✅ $W<<<<<<<<<<<<<<<<<<<<<<<<<$W\n"
 
 # Avoids file-target name conflicts
 .PHONY: all dir clean fclean re help pdf norm

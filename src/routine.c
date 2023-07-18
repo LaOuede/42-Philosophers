@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/17 17:28:39 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/17 20:22:46 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,3 @@ int	the_one_and_only(t_waiter *waiter)
 		return (1);
 	return (0);
 }
-
