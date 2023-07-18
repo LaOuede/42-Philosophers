@@ -6,13 +6,13 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 13:21:28 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/18 15:49:57 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-bool	join_threads(t_waiter *waiter)
+bool	ft_join_threads(t_waiter *waiter)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ bool	join_threads(t_waiter *waiter)
 	return (true);
 }
 
-bool	death_watch(t_waiter *waiter)
+bool	ft_death_watch(t_waiter *waiter)
 {
 	int	i;
 
@@ -52,7 +52,7 @@ bool	death_watch(t_waiter *waiter)
 	return (false);
 }
 
-bool	create_threads(t_waiter *waiter)
+bool	ft_create_threads(t_waiter *waiter)
 {
 	int	i;
 
@@ -66,7 +66,7 @@ bool	create_threads(t_waiter *waiter)
 		//time = start
 		//time = eat
 		if (pthread_create(&waiter->philo[0].thread, NULL, \
-			&routine_philos, &waiter->philo[i]))
+			&ft_routine_philos, &waiter->philo[i]))
 			return (false);
 	}
 	pthread_mutex_unlock(&waiter->start);
@@ -76,19 +76,22 @@ bool	create_threads(t_waiter *waiter)
 	return (true);
 }
 
-int	diner(t_waiter *waiter)
+int	ft_diner(t_waiter *waiter)
 {
-	gettimeofday(waiter->start_time, NULL);
+	waiter->start_time = ft_get_time();
 	if (DEBUG)
-		timestamp_in_ms();
+	{
+		printf(KYEL "---------- "KGRN"START_TIME"KYEL" ----------\n" RT);
+		printf("waiter->start_time = %ld ms\n", waiter->start_time);
+	}
 	if (waiter->param->nb_philo == 1)
 	{
-		the_one_and_only(waiter);
+		ft_the_one_and_only(waiter);
 		return (0);
 	}
-	else if (create_threads(waiter) == true)
-		if (death_watch(waiter) == false)
-			if (join_threads(waiter) == true)
+	else if (ft_create_threads(waiter) == true)
+		if (ft_death_watch(waiter) == false)
+			if (ft_join_threads(waiter) == true)
 				return (0);
 	return (1);
 }

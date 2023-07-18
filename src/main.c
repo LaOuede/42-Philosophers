@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 12:57:56 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/18 15:14:38 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	main(int argc, char **argv)
 {
 	t_waiter	*waiter;
 
-	waiter = init_waiter();
-	if ((argc == 5 || argc == 6) && parsing(argc, argv) == true)
+	waiter = ft_init_waiter();
+	if ((argc == 5 || argc == 6) && ft_parsing(argc, argv) == true)
 	{
-		waiter->param = init_param(argc, argv);
-		waiter->philo = init_philo(waiter);
-		diner(waiter);
-		clean_n_quit(waiter);
+		waiter->param = ft_init_param(argc, argv);
+		waiter->philo = ft_init_philo(waiter);
+		ft_diner(waiter);
+		ft_clean_n_quit(waiter);
 	}
 	else
 		ft_putstr_fd(ERR_ARGS, STDERR_FILENO);

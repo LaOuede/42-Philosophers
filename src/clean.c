@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/17 15:29:44 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/18 15:16:23 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-void	*free_null(void *ptr)
+void	*ft_free_null(void *ptr)
 {
 	if (ptr)
 		free(ptr);
 	return (NULL);
 }
 
-void	clean_n_quit(t_waiter *waiter)
+void	ft_clean_n_quit(t_waiter *waiter)
 {
 	if (waiter->param)
-		waiter->param = free_null(waiter->param);
+		waiter->param = ft_free_null(waiter->param);
 	if (waiter->philo)
-		waiter->philo = free_null(waiter->philo);
+		waiter->philo = ft_free_null(waiter->philo);
 	pthread_mutex_destroy(&waiter->print);
-	waiter = free_null(waiter);
+	waiter = ft_free_null(waiter);
 }

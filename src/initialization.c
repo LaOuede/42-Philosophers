@@ -6,13 +6,13 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 13:12:16 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/18 16:04:10 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-t_philo	*init_philo(t_waiter *waiter)
+t_philo	*ft_init_philo(t_waiter *waiter)
 {
 	int				i;
 	static t_philo	*philo;
@@ -35,7 +35,7 @@ t_philo	*init_philo(t_waiter *waiter)
 	return (philo);
 }
 
-t_param	*init_param(int argc, char **argv)
+t_param	*ft_init_param(int argc, char **argv)
 {
 	static t_param	*param;
 
@@ -63,14 +63,14 @@ t_param	*init_param(int argc, char **argv)
 	return (param);
 }
 
-t_waiter	*init_waiter(void)
+t_waiter	*ft_init_waiter(void)
 {
 	static t_waiter	*waiter = NULL;
 
 	if (!waiter)
 	{
 		waiter = ft_calloc(1, sizeof(t_waiter));
-		waiter->start_time = ft_calloc(1, sizeof(struct timeval));
+		waiter->start_time = 0;
 		waiter->param = NULL;
 		waiter->philo = NULL;
 		pthread_mutex_init(&waiter->start, NULL);

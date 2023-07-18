@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 13:13:38 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/18 15:54:26 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <unistd.h>
 
 /* ---------------------UTILS--------------------- */
-# define DEBUG 1
+# define DEBUG 0
 
 /* ---------------------COLORS--------------------- */
 # define KNRM "\x1B[m"
@@ -76,7 +76,7 @@ typedef struct s_philo
 
 typedef struct s_waiter
 {
-	struct timeval	*start_time;
+	time_t			start_time;
 	t_param			*param;
 	t_philo			*philo;
 	pthread_mutex_t	start;
@@ -89,29 +89,33 @@ typedef struct s_waiter
 }t_waiter;
 
 /* ------------------- ROUTINE -------------------- */
-int			diner(t_waiter *waiter);
-void		*routine_philos(void *arg);
-void		*routine_philo_alone(void *arg);
-int			the_one_and_only(t_waiter *waiter);
+int			ft_diner(t_waiter *waiter);
+void		*ft_routine_philos(void *arg);
+void		*ft_routine_philo_alone(void *arg);
+int			ft_the_one_and_only(t_waiter *waiter);
 
 /* -------------PARSING & INITIALIZING------------- */
-bool		create_threads(t_waiter *waiter);
-t_waiter	*init_waiter(void);
-t_param		*init_param(int argc, char **argv);
-t_philo		*init_philo(t_waiter *ms);
-bool		parsing(int argc, char **argv);
+bool		ft_create_threads(t_waiter *waiter);
+t_waiter	*ft_init_waiter(void);
+t_param		*ft_init_param(int argc, char **argv);
+t_philo		*ft_init_philo(t_waiter *ms);
+bool		ft_parsing(int argc, char **argv);
 
 /* ------------------CLEANING UP------------------- */
-void		clean_n_quit(t_waiter *ms);
-void		*free_null(void *ptr);
+void		ft_clean_n_quit(t_waiter *ms);
+void		*ft_free_null(void *ptr);
 
 /* ---------------------UTILS---------------------- */
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
-bool		is_digit(char *str);
+bool		ft_is_digit(char *str);
 void		ft_putstr_fd(char *s, int fd);
 
+/* ---------------------UTILS---------------------- */
+time_t		ft_get_time(void);
+void		ft_usleep(time_t time);
+int			ft_timestamp_in_ms(void);
+
 /* ---------------------DEBUG---------------------- */
-int			timestamp_in_ms(void);
 
 #endif
