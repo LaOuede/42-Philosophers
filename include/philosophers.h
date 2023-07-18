@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/17 17:27:05 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/18 09:13:31 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@
 <time_to_eat> <time_to_sleep> [nb_meals]\n"
 
 /* -------------------STRUCTURES------------------- */
-
 typedef struct s_fork
 {
 	pthread_mutex_t	fork;
@@ -53,6 +52,15 @@ typedef struct s_fork
 	bool			waiting;
 	bool			taken;
 }t_fork;
+
+typedef struct s_param
+{
+	int	nb_philo;
+	int	ms_die;
+	int	ms_eat;
+	int	ms_sleep;
+	int	nb_meals;
+}t_param;
 
 typedef struct s_philo
 {
@@ -64,15 +72,6 @@ typedef struct s_philo
 	bool		dead;
 	int			meals;
 }t_philo;
-
-typedef struct s_param
-{
-	int	nb_philo;
-	int	ms_die;
-	int	ms_eat;
-	int	ms_sleep;
-	int	nb_meals;
-}t_param;
 
 typedef struct s_waiter
 {
