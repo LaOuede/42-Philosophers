@@ -6,11 +6,22 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 10:05:37 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:05:19 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
+
+t_fork	*ft_init_fork(void)
+{
+	t_fork	*his_fork;
+	
+	his_fork = ft_calloc(1, sizeof(t_fork));
+	pthread_mutex_init(&his_fork->fork, NULL);
+	his_fork->free = true;
+	his_fork->taken = false;
+	return (his_fork);
+}
 
 t_philo	*ft_init_philo(t_waiter *waiter)
 {
@@ -26,6 +37,8 @@ t_philo	*ft_init_philo(t_waiter *waiter)
 			philo[i].idx = i;
 			philo[i].thread = 0;
 			philo[i].eating = 0;
+			philo[i].his_fork = ft_init_fork();
+			philo[i].nbr_fork = NULL;
 			philo[i].thinking = 0;
 			philo[i].sleeping = 0;
 			philo[i].dead = 0;

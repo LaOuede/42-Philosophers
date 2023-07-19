@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   routine_one.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 10:36:56 by gle-roux         ###   ########.fr       */
+/*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
+/*   Updated: 2023/07/19 10:09:58 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int	main(int argc, char **argv)
+void	*ft_routine_philo_alone(void *arg)
 {
 	t_waiter	*waiter;
 
+	(void) arg;
 	waiter = ft_init_waiter();
-	if ((argc == 5 || argc == 6) && ft_parsing(argc, argv) == true)
-	{
-		waiter->param = ft_init_param(argc, argv);
-		waiter->philo = ft_init_philo(waiter);
-		ft_diner(waiter);
-		ft_clean_n_quit(waiter);
-	}
-	else
-		ft_putstr_fd(ERR_ARGS, STDERR_FILENO);
+	ft_print_msg(waiter, 0, FORK);
+	ft_usleep(waiter->param->ms_die);
+	ft_print_msg(waiter, 0, DIED);
+	return (0);
+}
+
+int	ft_the_one_and_only(t_waiter *waiter)
+{
+	if (pthread_create(&waiter->philo[0].thread, NULL, \
+		&ft_routine_philo_alone, NULL))
+		return (1);
+	pthread_join(waiter->philo[0].thread, NULL);
 	return (0);
 }
