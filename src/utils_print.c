@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 12:37:08 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/19 14:22:59 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_print_msg(t_waiter *waiter, int idx, char *msg)
 	time_t	timestamp;
 
 	pthread_mutex_lock(&waiter->print);
-	timestamp = ft_timestamp_in_ms();
+	timestamp = ft_timestamp_in_ms(waiter);
 	printf("%ld %d %s\n", timestamp, idx, msg);
 	pthread_mutex_unlock(&waiter->print);
 }

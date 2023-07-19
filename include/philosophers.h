@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 12:21:43 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/19 14:15:37 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,10 @@ bool		ft_parsing(int argc, char **argv);
 
 /* ------------------- ROUTINE -------------------- */
 int			ft_diner(t_waiter *waiter);
-bool		ft_forking(int idx);
 void		*ft_routine_philos(void *arg);
 void		*ft_routine_philo_alone(void *arg);
 int			ft_the_one_and_only(t_waiter *waiter);
+bool		ft_think_n_fork(t_waiter *waiter, int idx);
 
 /* ---------------------UTILS---------------------- */
 int			ft_atoi(const char *str);
@@ -120,7 +120,7 @@ void		ft_putstr_fd(char *s, int fd);
 
 /* -------------------UTILS TIME-------------------- */
 time_t		ft_get_time(void);
-time_t		ft_timestamp_in_ms(void);
+time_t		ft_timestamp_in_ms(t_waiter *waiter);
 void		ft_usleep(time_t time);
 
 /* ------------------CLEANING UP------------------- */
