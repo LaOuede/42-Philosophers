@@ -6,21 +6,20 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 11:05:19 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:19:10 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-t_fork	*ft_init_fork(void)
+t_fork	ft_init_fork()
 {
 	t_fork	*his_fork;
-	
+
 	his_fork = ft_calloc(1, sizeof(t_fork));
 	pthread_mutex_init(&his_fork->fork, NULL);
 	his_fork->free = true;
-	his_fork->taken = false;
-	return (his_fork);
+	return (*his_fork);
 }
 
 t_philo	*ft_init_philo(t_waiter *waiter)
@@ -28,7 +27,7 @@ t_philo	*ft_init_philo(t_waiter *waiter)
 	int				i;
 	static t_philo	*philo;
 
-	i = 0;
+	i = -1;
 	if (!philo)
 	{
 		philo = ft_calloc(waiter->param->nb_philo, sizeof(t_philo));

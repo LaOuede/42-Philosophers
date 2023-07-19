@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 11:02:32 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:21:43 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ typedef struct s_fork
 {
 	pthread_mutex_t	fork;
 	bool			free;
-	bool			taken;
 }t_fork;
 
 typedef struct s_param
@@ -72,7 +71,7 @@ typedef struct s_philo
 	int			idx;
 	pthread_t	thread;
 	bool		eating;
-	t_fork		*his_fork;
+	t_fork		his_fork;
 	t_fork		*nbr_fork;
 	bool		thinking;
 	bool		sleeping;
@@ -97,13 +96,15 @@ typedef struct s_waiter
 
 /* -------------PARSING & INITIALIZING------------- */
 bool		ft_create_threads(t_waiter *waiter);
+t_fork		ft_init_fork();
 t_waiter	*ft_init_waiter(void);
 t_param		*ft_init_param(int argc, char **argv);
-t_philo		*ft_init_philo(t_waiter *ms);
+t_philo		*ft_init_philo(t_waiter *waiter);
 bool		ft_parsing(int argc, char **argv);
 
 /* ------------------- ROUTINE -------------------- */
 int			ft_diner(t_waiter *waiter);
+bool		ft_forking(int idx);
 void		*ft_routine_philos(void *arg);
 void		*ft_routine_philo_alone(void *arg);
 int			ft_the_one_and_only(t_waiter *waiter);

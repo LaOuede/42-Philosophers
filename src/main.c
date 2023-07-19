@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 10:36:56 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:02:32 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 	{
 		waiter->param = ft_init_param(argc, argv);
 		waiter->philo = ft_init_philo(waiter);
+		ft_init_fork(waiter);
 		ft_diner(waiter);
 		ft_clean_n_quit(waiter);
 	}

@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 10:07:48 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:41:04 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ bool	ft_create_threads(t_waiter *waiter)
 	pthread_mutex_unlock(&waiter->start);
 	if (DEBUG)
 		printf(KGRN"create_threads = true\n"RT);
+	while (1)
+		;
 	return (true);
 }
 
