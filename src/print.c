@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 16:05:13 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/19 10:02:46 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ void	ft_putstr_fd(char *str, int fd)
 		write(fd, &str[i], 1);
 }
 
-void	ft_putendl_fd(char *str, int fd)
+void	ft_print_msg(t_waiter *waiter, int idx, char *msg)
 {
-	if (!str)
-		return ;
-	ft_putstr_fd(str, fd);
-	write(fd, "\n", 1);
+	time_t	timestamp;
+
+	pthread_mutex_lock(&waiter->print);
+	timestamp = ft_timestamp_in_ms();
+	printf("%ld %d %s\n", timestamp, idx, msg);
+	pthread_mutex_unlock(&waiter->print);
 }

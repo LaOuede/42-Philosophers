@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 16:04:10 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/19 10:05:37 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_philo	*ft_init_philo(t_waiter *waiter)
 			philo[i].sleeping = 0;
 			philo[i].dead = 0;
 			philo[i].meals = 0;
+			philo[i].last_meal = 0;
 		}
 	}
 	return (philo);

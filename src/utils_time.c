@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 15:50:43 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/19 09:38:12 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ time_t	ft_get_time(void)
 	return (time_now);
 }
 
-int	ft_timestamp_in_ms(void)
+time_t	ft_timestamp_in_ms(void)
 {
-	time_t			time;
-	time_t			time_now;
-	t_waiter		*waiter;
+	time_t		time;
+	time_t		time_now;
+	t_waiter	*waiter;
 
 	waiter = ft_init_waiter();
 	time_now = ft_get_time();

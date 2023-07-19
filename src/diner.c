@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 15:49:57 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/19 10:07:48 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,14 @@ bool	ft_create_threads(t_waiter *waiter)
 		printf(KYEL "------- "KGRN"THREADS_CREATION"KYEL" -------\n" RT);
 	i = -1;
 	pthread_mutex_lock(&waiter->start);
-	//gettime
 	while (++i < waiter->param->nb_philo)
 	{
-		//time = start
-		//time = eat
-		if (pthread_create(&waiter->philo[0].thread, NULL, \
+		waiter->philo[i].last_meal = waiter->start_time;
+		if (pthread_create(&waiter->philo[i].thread, NULL, \
 			&ft_routine_philos, &waiter->philo[i]))
 			return (false);
 	}
 	pthread_mutex_unlock(&waiter->start);
-	//pthread_mutex_destroy(&waiter->start);
 	if (DEBUG)
 		printf(KGRN"create_threads = true\n"RT);
 	return (true);
