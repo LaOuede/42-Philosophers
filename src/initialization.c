@@ -6,43 +6,58 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 12:19:10 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:05:53 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-t_fork	ft_init_fork()
+void	ft_init_forks(t_waiter *waiter, t_philo *philo)
+{
+	int	i;
+
+	i = -1;
+	while (++i < waiter->param->nb_philo)
+	{
+		philo[i].his_fork = ft_init_his_fork();
+		if (i < waiter->param->nb_philo)
+			philo[i].nbr_fork = &philo[i + 1].his_fork;
+		else if (i == waiter->param->nb_philo - 1)
+			waiter->philo[i].nbr_fork = &waiter->philo[0].his_fork;
+		pthread_mutex_init(&philo[i].nbr_fork->fork, NULL);
+	}
+}
+
+t_fork	ft_init_his_fork(void)
 {
 	t_fork	*his_fork;
 
 	his_fork = ft_calloc(1, sizeof(t_fork));
 	pthread_mutex_init(&his_fork->fork, NULL);
-	his_fork->free = true;
+	his_fork->taken = false;
 	return (*his_fork);
 }
 
 t_philo	*ft_init_philo(t_waiter *waiter)
 {
-	int				i;
+	int				idx;
 	static t_philo	*philo;
 
-	i = -1;
+	idx = -1;
 	if (!philo)
 	{
 		philo = ft_calloc(waiter->param->nb_philo, sizeof(t_philo));
-		while (++i < waiter->param->nb_philo)
+		while (++idx < waiter->param->nb_philo)
 		{
-			philo[i].idx = i;
-			philo[i].thread = 0;
-			philo[i].eating = 0;
-			philo[i].his_fork = ft_init_fork();
-			philo[i].nbr_fork = NULL;
-			philo[i].thinking = 0;
-			philo[i].sleeping = 0;
-			philo[i].dead = 0;
-			philo[i].meals = 0;
-			philo[i].last_meal = 0;
+			philo[idx].idx = idx;
+			philo[idx].thread = 0;
+			philo[idx].eating = false;
+			philo[idx].thinking = false;
+			philo[idx].sleeping = false;
+			philo[idx].dead = false;
+			philo[idx].meals = 0;
+			philo[idx].last_meal = 0;
+			philo[idx].will_be_dead = waiter->param->ms_die;
 		}
 	}
 	return (philo);

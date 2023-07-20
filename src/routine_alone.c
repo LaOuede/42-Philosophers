@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine_one.c                                      :+:      :+:    :+:   */
+/*   routine_alone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 10:09:58 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:54:20 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	*ft_routine_philo_alone(void *arg)
 
 int	ft_the_one_and_only(t_waiter *waiter)
 {
+	waiter->start_time = ft_get_time();
 	if (pthread_create(&waiter->philo[0].thread, NULL, \
 		&ft_routine_philo_alone, NULL))
 		return (1);

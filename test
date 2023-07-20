@@ -1,201 +1,454 @@
-[33m------- [32mTHREADS_CREATION[33m -------
-[1;0mPhilo 0 created
-Philo 1 created
-Philo 2 created
-Philo 3 created
-Philo 4 created
-Philo 5 created
-Philo 6 created
-Philo 8 created
-Philo 7 created
-Philo 9 created
-Philo 10 created
-Philo 11 created
-Philo 12 created
-Philo 13 created
-Philo 14 created
-Philo 15 created
-Philo 16 created
-Philo 17 created
-Philo 18 created
-Philo 19 created
-Philo 20 created
-Philo 21 created
-Philo 22 created
-Philo 23 created
-Philo 24 created
-Philo 25 created
-Philo 26 created
-Philo 27 created
-Philo 28 created
-Philo 29 created
-Philo 30 created
-Philo 31 created
-Philo 32 created
-Philo 33 created
-Philo 34 created
-Philo 35 created
-Philo 36 created
-Philo 37 created
-Philo 38 created
-Philo 39 created
-Philo 40 created
-Philo 41 created
-Philo 42 created
-Philo 43 created
-Philo 44 created
-Philo 45 created
-Philo 46 created
-Philo 47 created
-Philo 48 created
-Philo 49 created
-Philo 50 created
-Philo 51 created
-Philo 52 created
-Philo 53 created
-Philo 54 created
-Philo 55 created
-Philo 56 created
-Philo 57 created
-Philo 58 created
-Philo 59 created
-Philo 60 created
-Philo 61 created
-Philo 62 created
-Philo 63 created
-Philo 64 created
-Philo 65 created
-Philo 66 created
-Philo 67 created
-Philo 68 created
-Philo 69 created
-Philo 70 created
-Philo 71 created
-Philo 72 created
-Philo 73 created
-Philo 74 created
-Philo 75 created
-Philo 76 created
-Philo 77 created
-Philo 78 created
-Philo 79 created
-Philo 80 created
-Philo 81 created
-Philo 82 created
-Philo 83 created
-Philo 84 created
-Philo 85 created
-Philo 86 created
-Philo 87 created
-Philo 88 created
-Philo 89 created
-Philo 90 created
-Philo 91 created
-Philo 92 created
-Philo 93 created
-Philo 94 created
-Philo 95 created
-Philo 96 created
-Philo 97 created
-Philo 98 created
-Philo 99 created
-Philo 100 created
-Philo 101 created
-Philo 102 created
-Philo 103 created
-Philo 104 created
-Philo 105 created
-Philo 106 created
-Philo 107 created
-Philo 108 created
-Philo 109 created
-Philo 110 created
-Philo 111 created
-Philo 112 created
-Philo 113 created
-Philo 114 created
-Philo 115 created
-Philo 116 created
-Philo 117 created
-Philo 118 created
-Philo 119 created
-Philo 120 created
-Philo 121 created
-Philo 122 created
-Philo 123 created
-Philo 124 created
-Philo 125 created
-Philo 126 created
-Philo 127 created
-Philo 128 created
-Philo 129 created
-Philo 130 created
-Philo 131 created
-Philo 132 created
-Philo 133 created
-Philo 134 created
-Philo 135 created
-Philo 136 created
-Philo 137 created
-Philo 138 created
-Philo 139 created
-Philo 140 created
-Philo 141 created
-Philo 142 created
-Philo 143 created
-Philo 144 created
-Philo 145 created
-Philo 146 created
-Philo 147 created
-Philo 148 created
-Philo 149 created
-Philo 150 created
-Philo 151 created
-Philo 152 created
-Philo 153 created
-Philo 154 created
-Philo 155 created
-Philo 156 created
-Philo 157 created
-Philo 158 created
-Philo 159 created
-Philo 160 created
-Philo 161 created
-Philo 162 created
-Philo 163 created
-Philo 164 created
-Philo 165 created
-Philo 166 created
-Philo 167 created
-Philo 168 created
-Philo 169 created
-Philo 170 created
-Philo 171 created
-Philo 172 created
-Philo 173 created
-Philo 174 created
-Philo 175 created
-Philo 176 created
-Philo 177 created
-Philo 178 created
-Philo 179 created
-Philo 180 created
-Philo 181 created
-Philo 182 created
-Philo 183 created
-Philo 184 created
-Philo 185 created
-Philo 186 created
-Philo 187 created
-Philo 188 created
-Philo 189 created
-Philo 190 created
-Philo 191 created
-Philo 192 created
-Philo 193 created
-Philo 194 created
-Philo 195 created
-Philo 196 created
-Philo 197 created
-Philo 198 created
-Philo 199 created
+0 0 [3m[35mcreated[1;0m
+0 6 [3m[35mcreated[1;0m
+0 7 [3m[35mcreated[1;0m
+Philo[7]
+0 7 [34mhas taken a fork[1;0m
+0 8 [3m[35mcreated[1;0m
+0 3 [3m[35mcreated[1;0m
+0 9 [3m[35mcreated[1;0m
+Philo[3]
+0 3 [34mhas taken a fork[1;0m
+Philo[9]
+0 3 [34mhas taken a fork[1;0m
+0 2 [3m[35mcreated[1;0m
+0 7 [34mhas taken a fork[1;0m
+0 1 [3m[35mcreated[1;0m
+Philo[1]
+0 1 [34mhas taken a fork[1;0m
+0 9 [34mhas taken a fork[1;0m
+0 1 [34mhas taken a fork[1;0m
+0 9 [34mhas taken a fork[1;0m
+0 1 [31mis eating[1;0m
+0 4 [3m[35mcreated[1;0m
+0 5 [3m[35mcreated[1;0m
+Philo[5]
+0 5 [34mhas taken a fork[1;0m
+0 5 [34mhas taken a fork[1;0m
+0 3 [31mis eating[1;0m
+0 5 [31mis eating[1;0m
+0 7 [31mis eating[1;0m
+0 10 [3m[35mcreated[1;0m
+0 9 [31mis eating[1;0m
+Philo[4]
+Philo[2]
+100 4 [34mhas taken a fork[1;0m
+Philo[6]
+100 4 [34mhas taken a fork[1;0m
+Philo[10]
+Philo[8]
+100 6 [34mhas taken a fork[1;0m
+Philo[0]
+100 0 [34mhas taken a fork[1;0m
+100 0 [34mhas taken a fork[1;0m
+100 10 [34mhas taken a fork[1;0m
+100 10 [34mhas taken a fork[1;0m
+100 10 [31mis eating[1;0m
+100 2 [34mhas taken a fork[1;0m
+100 6 [34mhas taken a fork[1;0m
+100 6 [31mis eating[1;0m
+100 4 [31mis eating[1;0m
+100 2 [34mhas taken a fork[1;0m
+100 2 [31mis eating[1;0m
+100 8 [34mhas taken a fork[1;0m
+100 8 [34mhas taken a fork[1;0m
+100 8 [31mis eating[1;0m
+100 0 [31mis eating[1;0m
+200 1 [33mis sleeping[1;0m
+200 7 [33mis sleeping[1;0m
+200 3 [33mis sleeping[1;0m
+200 9 [33mis sleeping[1;0m
+200 5 [33mis sleeping[1;0m
+300 0 [33mis sleeping[1;0m
+300 2 [33mis sleeping[1;0m
+300 4 [33mis sleeping[1;0m
+300 6 [33mis sleeping[1;0m
+300 10 [33mis sleeping[1;0m
+300 8 [33mis sleeping[1;0m
+Philo[1]
+400 1 [34mhas taken a fork[1;0m
+Philo[3]
+Philo[5]
+400 1 [34mhas taken a fork[1;0m
+Philo[7]
+400 7 [34mhas taken a fork[1;0m
+400 7 [34mhas taken a fork[1;0m
+400 3 [34mhas taken a fork[1;0m
+400 3 [34mhas taken a fork[1;0m
+400 5 [34mhas taken a fork[1;0m
+400 7 [31mis eating[1;0m
+Philo[9]
+400 1 [31mis eating[1;0m
+400 5 [34mhas taken a fork[1;0m
+400 5 [31mis eating[1;0m
+400 9 [34mhas taken a fork[1;0m
+400 9 [34mhas taken a fork[1;0m
+400 9 [31mis eating[1;0m
+400 3 [31mis eating[1;0m
+Philo[4]
+Philo[8]
+Philo[10]
+500 10 [34mhas taken a fork[1;0m
+Philo[6]
+Philo[0]
+500 10 [34mhas taken a fork[1;0m
+Philo[2]
+500 10 [31mis eating[1;0m
+500 4 [34mhas taken a fork[1;0m
+500 4 [34mhas taken a fork[1;0m
+500 4 [31mis eating[1;0m
+500 0 [34mhas taken a fork[1;0m
+500 8 [34mhas taken a fork[1;0m
+500 8 [34mhas taken a fork[1;0m
+500 8 [31mis eating[1;0m
+500 6 [34mhas taken a fork[1;0m
+500 6 [34mhas taken a fork[1;0m
+500 6 [31mis eating[1;0m
+500 0 [34mhas taken a fork[1;0m
+500 0 [31mis eating[1;0m
+500 2 [34mhas taken a fork[1;0m
+500 2 [34mhas taken a fork[1;0m
+500 2 [31mis eating[1;0m
+600 5 [33mis sleeping[1;0m
+600 7 [33mis sleeping[1;0m
+600 9 [33mis sleeping[1;0m
+600 1 [33mis sleeping[1;0m
+600 3 [33mis sleeping[1;0m
+700 8 [33mis sleeping[1;0m
+700 2 [33mis sleeping[1;0m
+700 4 [33mis sleeping[1;0m
+700 10 [33mis sleeping[1;0m
+700 0 [33mis sleeping[1;0m
+700 6 [33mis sleeping[1;0m
+Philo[7]
+Philo[9]
+Philo[1]
+Philo[3]
+Philo[5]
+800 7 [34mhas taken a fork[1;0m
+800 7 [34mhas taken a fork[1;0m
+800 7 [31mis eating[1;0m
+800 1 [34mhas taken a fork[1;0m
+800 1 [34mhas taken a fork[1;0m
+800 1 [31mis eating[1;0m
+800 5 [34mhas taken a fork[1;0m
+800 3 [34mhas taken a fork[1;0m
+800 9 [34mhas taken a fork[1;0m
+800 9 [34mhas taken a fork[1;0m
+800 5 [34mhas taken a fork[1;0m
+800 3 [34mhas taken a fork[1;0m
+800 3 [31mis eating[1;0m
+800 5 [31mis eating[1;0m
+800 9 [31mis eating[1;0m
+Philo[4]
+900 4 [34mhas taken a fork[1;0m
+Philo[2]
+900 4 [34mhas taken a fork[1;0m
+Philo[8]
+900 4 [31mis eating[1;0m
+Philo[10]
+900 10 [34mhas taken a fork[1;0m
+Philo[6]
+900 6 [34mhas taken a fork[1;0m
+900 2 [34mhas taken a fork[1;0m
+900 6 [34mhas taken a fork[1;0m
+900 6 [31mis eating[1;0m
+900 2 [34mhas taken a fork[1;0m
+900 2 [31mis eating[1;0m
+Philo[0]
+900 10 [34mhas taken a fork[1;0m
+900 10 [31mis eating[1;0m
+900 8 [34mhas taken a fork[1;0m
+900 8 [34mhas taken a fork[1;0m
+900 8 [31mis eating[1;0m
+900 0 [34mhas taken a fork[1;0m
+900 0 [34mhas taken a fork[1;0m
+900 0 [31mis eating[1;0m
+1000 7 [33mis sleeping[1;0m
+1000 5 [33mis sleeping[1;0m
+1000 9 [33mis sleeping[1;0m
+1000 1 [33mis sleeping[1;0m
+1000 3 [33mis sleeping[1;0m
+1100 2 [33mis sleeping[1;0m
+1100 0 [33mis sleeping[1;0m
+1100 4 [33mis sleeping[1;0m
+1100 6 [33mis sleeping[1;0m
+1100 10 [33mis sleeping[1;0m
+1100 8 [33mis sleeping[1;0m
+Philo[7]
+1200 7 [34mhas taken a fork[1;0m
+1200 7 [34mhas taken a fork[1;0m
+1200 7 [31mis eating[1;0m
+Philo[3]
+Philo[1]
+1200 1 [34mhas taken a fork[1;0m
+Philo[5]
+1200 5 [34mhas taken a fork[1;0m
+1200 3 [34mhas taken a fork[1;0m
+1200 3 [34mhas taken a fork[1;0m
+1200 3 [31mis eating[1;0m
+1200 1 [34mhas taken a fork[1;0m
+1200 1 [31mis eating[1;0m
+1200 5 [34mhas taken a fork[1;0m
+1200 5 [31mis eating[1;0m
+Philo[9]
+1200 9 [34mhas taken a fork[1;0m
+1200 9 [34mhas taken a fork[1;0m
+1200 9 [31mis eating[1;0m
+Philo[8]
+Philo[6]
+Philo[2]
+1300 6 [34mhas taken a fork[1;0m
+1300 6 [34mhas taken a fork[1;0m
+1300 6 [31mis eating[1;0m
+1300 8 [34mhas taken a fork[1;0m
+Philo[4]
+Philo[0]
+Philo[10]
+1300 8 [34mhas taken a fork[1;0m
+1300 8 [31mis eating[1;0m
+1300 2 [34mhas taken a fork[1;0m
+1300 2 [34mhas taken a fork[1;0m
+1300 2 [31mis eating[1;0m
+1300 0 [34mhas taken a fork[1;0m
+1300 0 [34mhas taken a fork[1;0m
+1300 0 [31mis eating[1;0m
+1300 10 [34mhas taken a fork[1;0m
+1300 10 [34mhas taken a fork[1;0m
+1300 10 [31mis eating[1;0m
+1300 4 [34mhas taken a fork[1;0m
+1300 4 [34mhas taken a fork[1;0m
+1300 4 [31mis eating[1;0m
+1400 5 [33mis sleeping[1;0m
+1400 9 [33mis sleeping[1;0m
+1400 1 [33mis sleeping[1;0m
+1400 3 [33mis sleeping[1;0m
+1400 7 [33mis sleeping[1;0m
+1500 6 [33mis sleeping[1;0m
+1500 8 [33mis sleeping[1;0m
+1500 2 [33mis sleeping[1;0m
+1500 4 [33mis sleeping[1;0m
+1500 10 [33mis sleeping[1;0m
+1500 0 [33mis sleeping[1;0m
+Philo[3]
+Philo[1]
+1600 3 [34mhas taken a fork[1;0m
+Philo[5]
+Philo[7]
+1600 3 [34mhas taken a fork[1;0m
+1600 7 [34mhas taken a fork[1;0m
+Philo[9]
+1600 7 [34mhas taken a fork[1;0m
+1600 7 [31mis eating[1;0m
+1600 3 [31mis eating[1;0m
+1600 5 [34mhas taken a fork[1;0m
+1600 5 [34mhas taken a fork[1;0m
+1600 5 [31mis eating[1;0m
+1600 9 [34mhas taken a fork[1;0m
+1600 9 [34mhas taken a fork[1;0m
+1600 9 [31mis eating[1;0m
+1600 1 [34mhas taken a fork[1;0m
+1600 1 [34mhas taken a fork[1;0m
+1600 1 [31mis eating[1;0m
+Philo[2]
+Philo[0]
+1700 2 [34mhas taken a fork[1;0m
+1700 2 [34mhas taken a fork[1;0m
+Philo[6]
+1700 2 [31mis eating[1;0m
+Philo[4]
+Philo[10]
+Philo[8]
+1700 6 [34mhas taken a fork[1;0m
+1700 6 [34mhas taken a fork[1;0m
+1700 6 [31mis eating[1;0m
+1700 4 [34mhas taken a fork[1;0m
+1700 10 [34mhas taken a fork[1;0m
+1700 4 [34mhas taken a fork[1;0m
+1700 4 [31mis eating[1;0m
+1700 10 [34mhas taken a fork[1;0m
+1700 10 [31mis eating[1;0m
+1700 0 [34mhas taken a fork[1;0m
+1700 0 [34mhas taken a fork[1;0m
+1700 0 [31mis eating[1;0m
+1700 8 [34mhas taken a fork[1;0m
+1700 8 [34mhas taken a fork[1;0m
+1700 8 [31mis eating[1;0m
+1800 3 [33mis sleeping[1;0m
+1800 1 [33mis sleeping[1;0m
+1800 5 [33mis sleeping[1;0m
+1800 7 [33mis sleeping[1;0m
+1800 9 [33mis sleeping[1;0m
+1900 6 [33mis sleeping[1;0m
+1900 8 [33mis sleeping[1;0m
+1900 2 [33mis sleeping[1;0m
+1900 0 [33mis sleeping[1;0m
+1900 4 [33mis sleeping[1;0m
+1900 10 [33mis sleeping[1;0m
+Philo[7]
+2000 7 [34mhas taken a fork[1;0m
+2000 7 [34mhas taken a fork[1;0m
+2000 7 [31mis eating[1;0m
+Philo[9]
+2000 9 [34mhas taken a fork[1;0m
+Philo[5]
+2000 9 [34mhas taken a fork[1;0m
+Philo[1]
+Philo[3]
+2000 9 [31mis eating[1;0m
+2000 5 [34mhas taken a fork[1;0m
+2000 5 [34mhas taken a fork[1;0m
+2000 5 [31mis eating[1;0m
+2000 1 [34mhas taken a fork[1;0m
+2000 1 [34mhas taken a fork[1;0m
+2000 1 [31mis eating[1;0m
+2000 3 [34mhas taken a fork[1;0m
+2000 3 [34mhas taken a fork[1;0m
+2000 3 [31mis eating[1;0m
+Philo[10]
+Philo[8]
+2100 10 [34mhas taken a fork[1;0m
+Philo[4]
+Philo[0]
+2100 0 [34mhas taken a fork[1;0m
+Philo[2]
+2100 0 [34mhas taken a fork[1;0m
+2100 0 [31mis eating[1;0m
+2100 10 [34mhas taken a fork[1;0m
+2100 8 [34mhas taken a fork[1;0m
+2100 10 [31mis eating[1;0m
+2100 8 [34mhas taken a fork[1;0m
+2100 4 [34mhas taken a fork[1;0m
+2100 4 [34mhas taken a fork[1;0m
+2100 4 [31mis eating[1;0m
+2100 2 [34mhas taken a fork[1;0m
+2100 2 [34mhas taken a fork[1;0m
+2100 2 [31mis eating[1;0m
+2100 8 [31mis eating[1;0m
+Philo[6]
+2100 6 [34mhas taken a fork[1;0m
+2100 6 [34mhas taken a fork[1;0m
+2100 6 [31mis eating[1;0m
+2200 9 [33mis sleeping[1;0m
+2200 7 [33mis sleeping[1;0m
+2200 5 [33mis sleeping[1;0m
+2200 3 [33mis sleeping[1;0m
+2200 1 [33mis sleeping[1;0m
+2300 4 [33mis sleeping[1;0m
+2300 6 [33mis sleeping[1;0m
+2300 10 [33mis sleeping[1;0m
+2300 0 [33mis sleeping[1;0m
+2300 8 [33mis sleeping[1;0m
+2300 2 [33mis sleeping[1;0m
+Philo[9]
+Philo[5]
+Philo[3]
+Philo[1]
+2400 9 [34mhas taken a fork[1;0m
+Philo[7]
+2400 9 [34mhas taken a fork[1;0m
+2400 3 [34mhas taken a fork[1;0m
+2400 3 [34mhas taken a fork[1;0m
+2400 3 [31mis eating[1;0m
+2400 9 [31mis eating[1;0m
+2400 1 [34mhas taken a fork[1;0m
+2400 1 [34mhas taken a fork[1;0m
+2400 1 [31mis eating[1;0m
+2400 5 [34mhas taken a fork[1;0m
+2400 5 [34mhas taken a fork[1;0m
+2400 5 [31mis eating[1;0m
+2400 7 [34mhas taken a fork[1;0m
+2400 7 [34mhas taken a fork[1;0m
+2400 7 [31mis eating[1;0m
+Philo[10]
+Philo[8]
+Philo[0]
+Philo[2]
+Philo[6]
+2500 10 [34mhas taken a fork[1;0m
+Philo[4]
+2500 4 [34mhas taken a fork[1;0m
+2500 2 [34mhas taken a fork[1;0m
+2500 4 [34mhas taken a fork[1;0m
+2500 4 [31mis eating[1;0m
+2500 0 [34mhas taken a fork[1;0m
+2500 6 [34mhas taken a fork[1;0m
+2500 0 [34mhas taken a fork[1;0m
+2500 0 [31mis eating[1;0m
+2500 6 [34mhas taken a fork[1;0m
+2500 2 [34mhas taken a fork[1;0m
+2500 2 [31mis eating[1;0m
+2500 10 [34mhas taken a fork[1;0m
+2500 10 [31mis eating[1;0m
+2500 8 [34mhas taken a fork[1;0m
+2500 8 [34mhas taken a fork[1;0m
+2500 8 [31mis eating[1;0m
+2500 6 [31mis eating[1;0m
+2600 9 [33mis sleeping[1;0m
+2600 7 [33mis sleeping[1;0m
+2600 3 [33mis sleeping[1;0m
+2600 5 [33mis sleeping[1;0m
+2600 1 [33mis sleeping[1;0m
+2700 8 [33mis sleeping[1;0m
+2700 10 [33mis sleeping[1;0m
+2700 2 [33mis sleeping[1;0m
+2700 4 [33mis sleeping[1;0m
+2700 6 [33mis sleeping[1;0m
+2700 0 [33mis sleeping[1;0m
+Philo[3]
+2800 3 [34mhas taken a fork[1;0m
+2800 3 [34mhas taken a fork[1;0m
+2800 3 [31mis eating[1;0m
+Philo[1]
+Philo[9]
+2800 9 [34mhas taken a fork[1;0m
+2800 9 [34mhas taken a fork[1;0m
+Philo[7]
+Philo[5]
+2800 9 [31mis eating[1;0m
+2800 5 [34mhas taken a fork[1;0m
+2800 5 [34mhas taken a fork[1;0m
+2800 5 [31mis eating[1;0m
+2800 7 [34mhas taken a fork[1;0m
+2800 7 [34mhas taken a fork[1;0m
+2800 7 [31mis eating[1;0m
+2800 1 [34mhas taken a fork[1;0m
+2800 1 [34mhas taken a fork[1;0m
+2800 1 [31mis eating[1;0m
+Philo[8]
+2900 8 [34mhas taken a fork[1;0m
+2900 8 [34mhas taken a fork[1;0m
+2900 8 [31mis eating[1;0m
+Philo[10]
+Philo[4]
+Philo[2]
+2900 10 [34mhas taken a fork[1;0m
+2900 2 [34mhas taken a fork[1;0m
+Philo[6]
+2900 6 [34mhas taken a fork[1;0m
+2900 10 [34mhas taken a fork[1;0m
+2900 6 [34mhas taken a fork[1;0m
+2900 4 [34mhas taken a fork[1;0m
+2900 4 [34mhas taken a fork[1;0m
+2900 6 [31mis eating[1;0m
+2900 2 [34mhas taken a fork[1;0m
+2900 4 [31mis eating[1;0m
+2900 10 [31mis eating[1;0m
+2900 2 [31mis eating[1;0m
+Philo[0]
+2900 0 [34mhas taken a fork[1;0m
+2900 0 [34mhas taken a fork[1;0m
+2900 0 [31mis eating[1;0m
+3000 7 [33mis sleeping[1;0m
+3000 1 [33mis sleeping[1;0m
+3000 5 [33mis sleeping[1;0m
+3000 3 [33mis sleeping[1;0m
+3000 9 [33mis sleeping[1;0m
+3100 8 [33mis sleeping[1;0m
+3100 4 [33mis sleeping[1;0m
+3100 2 [33mis sleeping[1;0m
+3100 6 [33mis sleeping[1;0m
+3100 10 [33mis sleeping[1;0m
+3100 0 [33mis sleeping[1;0m
+Philo[5]
+Philo[3]
+3200 5 [34mhas taken a for

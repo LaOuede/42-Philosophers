@@ -6,7 +6,7 @@
 #    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/07/19 11:43:05 by gle-roux         ###   ########.fr        #
+#    Updated: 2023/07/20 13:23:18 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,8 @@ SRCS_LIST	=	clean.c \
 				routine.c \
 				routine_alone.c \
 				utils.c \
+				utils_death.c \
+				utils_eat.c \
 				utils_print.c \
 				utils_time.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))

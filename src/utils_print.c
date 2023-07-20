@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 14:22:59 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:25:16 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,19 @@ void	ft_putstr_fd(char *str, int fd)
 		write(fd, &str[i], 1);
 }
 
-void	ft_print_msg(t_waiter *waiter, int idx, char *msg)
+int	ft_print_msg(t_waiter *waiter, int idx, char *msg)
 {
 	time_t	timestamp;
 
 	pthread_mutex_lock(&waiter->print);
-	timestamp = ft_timestamp_in_ms(waiter);
-	printf("%ld %d %s\n", timestamp, idx, msg);
+	if (ft_night_watch(waiter, idx) == true)
+	{
+		timestamp = ft_timestamp_in_ms(waiter);
+		printf("%ld %d %s\n", timestamp, idx, msg);
+		pthread_mutex_unlock(&waiter->print);
+		return (0);
+	}
+	printf("Someone has died!\n");
 	pthread_mutex_unlock(&waiter->print);
+	return (1);
 }

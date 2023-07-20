@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 14:15:37 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:25:27 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,18 @@
 <time_to_eat> <time_to_sleep> [nb_meals]\n"
 
 /* ------------------MSG TO PRINT------------------ */
-# define FORK	"has taken a fork"
-# define EAT	"is eating"
-# define SLEEP	"is sleeping"
-# define THINK	"is thinking"
-# define DIED	"died"
+# define FORK	KBLU"has taken a fork"RT
+# define EAT	KRED"is eating"RT
+# define SLEEP	KYEL"is sleeping"RT
+# define THINK	KGRN"is thinking"RT
+# define DIED	BLD KMAG"died"RT
+# define CREA	KITA KMAG"created"RT
 
 /* -------------------STRUCTURES------------------- */
 typedef struct s_fork
 {
 	pthread_mutex_t	fork;
-	bool			free;
+	bool			taken;
 }t_fork;
 
 typedef struct s_param
@@ -68,16 +69,17 @@ typedef struct s_param
 
 typedef struct s_philo
 {
-	int			idx;
-	pthread_t	thread;
-	bool		eating;
-	t_fork		his_fork;
-	t_fork		*nbr_fork;
-	bool		thinking;
-	bool		sleeping;
-	bool		dead;
-	int			meals;
-	time_t		last_meal;
+	int				idx;
+	pthread_t		thread;
+	bool			eating;
+	t_fork			his_fork;
+	t_fork			*nbr_fork;
+	bool			thinking;
+	bool			sleeping;
+	bool			dead;
+	int				meals;
+	time_t			last_meal;
+	time_t			will_be_dead;
 }t_philo;
 
 typedef struct s_waiter
@@ -96,26 +98,32 @@ typedef struct s_waiter
 
 /* -------------PARSING & INITIALIZING------------- */
 bool		ft_create_threads(t_waiter *waiter);
-t_fork		ft_init_fork();
-t_waiter	*ft_init_waiter(void);
+void		ft_init_forks(t_waiter *waiter, t_philo *philo);
+t_fork		ft_init_his_fork(void);
 t_param		*ft_init_param(int argc, char **argv);
 t_philo		*ft_init_philo(t_waiter *waiter);
+t_waiter	*ft_init_waiter(void);
 bool		ft_parsing(int argc, char **argv);
 
 /* ------------------- ROUTINE -------------------- */
+bool		ft_check_meals(t_waiter *waiter, int idx);
 int			ft_diner(t_waiter *waiter);
 void		*ft_routine_philos(void *arg);
 void		*ft_routine_philo_alone(void *arg);
 int			ft_the_one_and_only(t_waiter *waiter);
-bool		ft_think_n_fork(t_waiter *waiter, int idx);
+bool		ft_take_forks(t_waiter *waiter, int idx);
 
 /* ---------------------UTILS---------------------- */
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 bool		ft_is_digit(char *str);
 
+/* ------------------UTILS DEATH-------------------- */
+bool		ft_night_watch(t_waiter *waiter, int idx);
+bool		ft_still_standing(t_waiter *waiter, int idx);
+
 /* ------------------UTILS PRINT-------------------- */
-void		ft_print_msg(t_waiter *waiter, int idx, char *msg);
+int			ft_print_msg(t_waiter *waiter, int idx, char *msg);
 void		ft_putstr_fd(char *s, int fd);
 
 /* -------------------UTILS TIME-------------------- */
