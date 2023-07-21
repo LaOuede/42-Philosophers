@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/20 21:22:20 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/20 21:29:58 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,8 @@ bool	ft_create_threads(t_waiter *waiter)
 	}
 	waiter->start_time = ft_get_time();
 	pthread_mutex_unlock(&waiter->start);
-/* 	while (waiter->all_alive == true)
-	{
-		if (waiter->all_alive == false)
-		{
-			printf("Someone has died!\n");
-			break;
-		}
-	} */
+/* 	while (1)
+	; */
 	ft_usleep(2500);
 	return (true);
 }

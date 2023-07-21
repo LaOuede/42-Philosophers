@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/20 15:41:22 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/20 21:28:21 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ bool	ft_take_forks(t_waiter *waiter, int idx)
 	ft_print_msg(waiter, idx, THINK);
 	pthread_mutex_lock(&philo[idx].his_fork.fork);
 	pthread_mutex_lock(&philo[idx].nbr_fork->fork);
-	if (philo[idx].his_fork.taken == false && philo[idx].nbr_fork->taken == false)
+	if (philo[idx].his_fork.taken == false \
+		&& philo[idx].nbr_fork->taken == false)
 	{
 		philo[idx].his_fork.taken = true;
 		ft_print_msg(waiter, idx, FORK);
@@ -60,7 +61,7 @@ void	*ft_routine_philos(void *arg)
 	ft_print_msg(waiter, idx, CREA);
 	if (!(idx & 1))
 		ft_usleep(waiter->param->ms_eat / 2);
-	while (ft_still_standing(waiter, idx) == true && waiter->all_alive == true)
+	while (1)
 	{
 		if (ft_take_forks(waiter, idx) == true)
 		{
