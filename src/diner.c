@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   diner.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/20 15:14:30 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/20 21:22:20 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ bool	ft_create_threads(t_waiter *waiter)
 	}
 	waiter->start_time = ft_get_time();
 	pthread_mutex_unlock(&waiter->start);
-	while (waiter->all_alive == true)
+/* 	while (waiter->all_alive == true)
 	{
 		if (waiter->all_alive == false)
 		{
 			printf("Someone has died!\n");
 			break;
 		}
-	}
-	//ft_usleep(2500);
+	} */
+	ft_usleep(2500);
 	return (true);
 }
 
@@ -60,8 +60,12 @@ int	ft_diner(t_waiter *waiter)
 		ft_the_one_and_only(waiter);
 		return (0);
 	}
-	else if (ft_create_threads(waiter) == true)
-		if (ft_join_threads(waiter) == true)
-			return (0);
+	else
+	{
+		ft_init_forks(waiter, waiter->philo);
+		if (ft_create_threads(waiter) == true)
+			if (ft_join_threads(waiter) == true)
+				return (0);
+	}
 	return (1);
 }

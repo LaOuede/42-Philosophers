@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine_alone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/20 11:54:20 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/20 21:22:10 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	*ft_routine_philo_alone(void *arg)
 	(void) arg;
 	waiter = ft_init_waiter();
 	ft_print_msg(waiter, 0, FORK);
+	printf("ms_die = %d\n", waiter->param->ms_die);
 	ft_usleep(waiter->param->ms_die);
 	ft_print_msg(waiter, 0, DIED);
 	return (0);
