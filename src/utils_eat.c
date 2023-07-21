@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 11:28:14 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/21 12:41:37 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,32 @@ bool	ft_smart_eat(t_waiter *waiter, int idx)
 	return (true);
 }
 
-bool	ft_check_meals(t_waiter *waiter, int idx)
+bool	ft_all_sated(t_waiter *waiter)
 {
-	waiter->philo->meals += 1;
-	if (waiter->philo[idx].meals == waiter->param->nb_meals)
+	int	i;
+
+	i = -1;
+	while (++i < waiter->param->nb_philo)
 	{
+		if (waiter->philo[i].meals != waiter->param->nb_meals)
+			break ;
 		pthread_mutex_lock(&waiter->eat);
 		waiter->sated = true;
-		pthread_mutex_unlock(&waiter->eat);
-		return (false);
+		exit (EXIT_SUCCESS);
+/* 		pthread_mutex_unlock(&waiter->eat);
+		return (true); */
 	}
+	return (false);
+}
+
+bool	ft_check_meals(t_waiter *waiter, int idx)
+{
+	printf("philo[%d]\n", idx);
+	printf("philo[%d] meals = %d\n", idx, waiter->philo[idx].meals);
+	waiter->philo[idx].meals += 1;
+	printf("philo[%d] meals = %d\n", idx, waiter->philo[idx].meals);
+	if (waiter->philo[idx].meals == waiter->param->nb_meals)
+		if (ft_all_sated(waiter) == true)
+			return (false);
 	return (true);
 }

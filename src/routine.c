@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 12:16:01 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/21 12:43:02 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ bool	ft_eat(t_waiter *waiter, int idx)
 	}
 	if (ft_check_meals(waiter, idx) == true)
 	{
+		printf("waiter->sated = %d\n", waiter->sated);
 		waiter->philo[idx].last_meal = ft_timestamp_in_ms(waiter);
 		if (ft_smart_eat(waiter, idx) == true)
 		{
@@ -107,19 +108,20 @@ void	*ft_routine_philos(void *arg)
 	}
 	while (42)
 	{
-/* 		if (ft_think_n_forks(waiter, idx) == false)
+		if (ft_think_n_forks(waiter, idx) == false)
 			break ;
+		printf("ft_eat = %d\n", ft_eat(waiter, idx));
 		if (ft_eat(waiter, idx) == false)
 			break ;
 		if (ft_sleep(waiter, idx) == false)
 			break ;
 		if (ft_think(waiter, idx) == false)
-			break; */
-		if (ft_think_n_forks(waiter, idx) == true)
+			break;
+/* 		if (ft_think_n_forks(waiter, idx) == true)
 			if (ft_eat(waiter, idx) == true)
 				if (ft_sleep(waiter, idx) == true)
 					if (ft_think(waiter, idx) == false)
-						break;
+						break; */
 	}
 	return (0);
 }
