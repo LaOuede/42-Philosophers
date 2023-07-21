@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 08:18:34 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/21 11:25:11 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,45 +96,56 @@ typedef struct s_waiter
 
 }t_waiter;
 
-/* -------------PARSING & INITIALIZING------------- */
+/* ---------------- INITIALIZATION ---------------- */
 bool		ft_create_threads(t_waiter *waiter);
 void		ft_init_forks(t_waiter *waiter, t_philo *philo);
-t_fork		ft_init_his_fork(void);
 t_param		*ft_init_param(int argc, char **argv);
 t_philo		*ft_init_philo(t_waiter *waiter);
 t_waiter	*ft_init_waiter(void);
+
+/* ------------------- PARSING -------------------- */
+bool		ft_args_check(char **argv);
+bool		ft_digit_check(char **argv);
+bool		ft_nb_philo_check(char *str);
 bool		ft_parsing(int argc, char **argv);
 
 /* ------------------- ROUTINE -------------------- */
 bool		ft_check_meals(t_waiter *waiter, int idx);
 int			ft_diner(t_waiter *waiter);
+bool		ft_eat(t_waiter *waiter, int idx);
+bool		ft_join_threads(t_waiter *waiter);
 void		*ft_routine_philos(void *arg);
 void		*ft_routine_philo_alone(void *arg);
+bool		ft_sleep(t_waiter *waiter, int idx);
 int			ft_the_one_and_only(t_waiter *waiter);
 bool		ft_think_n_forks(t_waiter *waiter, int idx);
 
-/* ---------------------UTILS---------------------- */
+/* -------------------- UTILS --------------------- */
 int			ft_atoi(const char *str);
 void		*ft_calloc(size_t count, size_t size);
 bool		ft_is_digit(char *str);
 
-/* ------------------UTILS DEATH-------------------- */
+/* ----------------- UTILS DEATH ------------------ */
+bool		ft_death_watchtower(t_waiter *waiter);
 bool		ft_night_watch(t_waiter *waiter, int idx);
 bool		ft_still_standing(t_waiter *waiter, int idx);
 
-/* ------------------UTILS PRINT-------------------- */
+/* ------------------ UTILS EAT ------------------- */
+bool		ft_check_meals(t_waiter *waiter, int idx);
+bool		ft_smart_eat(t_waiter *waiter, int idx);
+
+/* ------------------UTILS PRINT------------------- */
 int			ft_print_msg(t_waiter *waiter, int idx, char *msg);
+int			ft_print_msg_alone(t_waiter *waiter, int idx, char *msg);
 void		ft_putstr_fd(char *s, int fd);
 
-/* -------------------UTILS TIME-------------------- */
+/* ------------------ UTILS TIME ------------------ */
 time_t		ft_get_time(void);
 time_t		ft_timestamp_in_ms(t_waiter *waiter);
 void		ft_usleep(time_t time);
 
-/* ------------------CLEANING UP------------------- */
+/* ------------------- CLEANING ------------------- */
 void		ft_clean_n_quit(t_waiter *ms);
 void		*ft_free_null(void *ptr);
-
-/* ---------------------DEBUG---------------------- */
 
 #endif

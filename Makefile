@@ -6,7 +6,7 @@
 #    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/07/20 13:23:18 by gle-roux         ###   ########.fr        #
+#    Updated: 2023/07/21 10:40:43 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,6 @@ NAME		=	philo
 # Dir. and files names
 SRCS_DIR	=	./src/
 SRCS_LIST	=	clean.c \
-				diner.c \
 				initialization.c \
 				main.c \
 				parsing.c \
