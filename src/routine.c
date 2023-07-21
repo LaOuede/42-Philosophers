@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/20 21:28:21 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/21 07:54:30 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
+
+bool	ft_sleep(t_waiter *waiter, int idx)
+{
+	waiter->philo[idx].sleeping = true;
+	ft_print_msg(waiter, idx, SLEEP);
+	ft_usleep(waiter->param->ms_sleep);
+	return (true);
+}
 
 bool	ft_eat(t_waiter *waiter, int idx)
 {
@@ -29,7 +37,7 @@ bool	ft_eat(t_waiter *waiter, int idx)
 	return (false);
 }
 
-bool	ft_take_forks(t_waiter *waiter, int idx)
+bool	ft_think_n_forks(t_waiter *waiter, int idx)
 {
 	t_philo	*philo;
 
@@ -61,15 +69,12 @@ void	*ft_routine_philos(void *arg)
 	ft_print_msg(waiter, idx, CREA);
 	if (!(idx & 1))
 		ft_usleep(waiter->param->ms_eat / 2);
-	while (1)
+	while (42)
 	{
-		if (ft_take_forks(waiter, idx) == true)
-		{
-			if (ft_eat(waiter, idx) == false)
-				break ;
-			ft_print_msg(waiter, idx, SLEEP);
-			ft_usleep(waiter->param->ms_sleep);
-		}
+		if (ft_think_n_forks(waiter, idx) == true)
+			if (ft_eat(waiter, idx) == true)
+				if (ft_sleep(waiter, idx) == true)
+					continue ;
 	}
 	return (0);
 }

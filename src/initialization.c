@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/20 14:05:53 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/21 08:26:30 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,14 @@ void	ft_init_forks(t_waiter *waiter, t_philo *philo)
 	i = -1;
 	while (++i < waiter->param->nb_philo)
 	{
-		philo[i].his_fork = ft_init_his_fork();
+		philo[i].his_fork.taken = false;
+		pthread_mutex_init(&philo[i].his_fork.fork, NULL);
 		if (i < waiter->param->nb_philo)
 			philo[i].nbr_fork = &philo[i + 1].his_fork;
 		else if (i == waiter->param->nb_philo - 1)
 			waiter->philo[i].nbr_fork = &waiter->philo[0].his_fork;
 		pthread_mutex_init(&philo[i].nbr_fork->fork, NULL);
 	}
-}
-
-t_fork	ft_init_his_fork(void)
-{
-	t_fork	*his_fork;
-
-	his_fork = ft_calloc(1, sizeof(t_fork));
-	pthread_mutex_init(&his_fork->fork, NULL);
-	his_fork->taken = false;
-	return (*his_fork);
 }
 
 t_philo	*ft_init_philo(t_waiter *waiter)

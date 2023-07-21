@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/20 15:25:27 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/21 08:18:34 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int			ft_diner(t_waiter *waiter);
 void		*ft_routine_philos(void *arg);
 void		*ft_routine_philo_alone(void *arg);
 int			ft_the_one_and_only(t_waiter *waiter);
-bool		ft_take_forks(t_waiter *waiter, int idx);
+bool		ft_think_n_forks(t_waiter *waiter, int idx);
 
 /* ---------------------UTILS---------------------- */
 int			ft_atoi(const char *str);
