@@ -6,18 +6,18 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 15:16:32 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/21 12:22:35 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-bool	ft_args_check(char **argv)
+bool	ft_args_check(int argc, char **argv)
 {
 	int	i;
 
 	i = 1;
-	while (argv[++i])
+	while (++i < argc - 1)
 		if (ft_atoi(argv[i]) < 60)
 			return (false);
 	return (true);
@@ -46,7 +46,7 @@ bool	ft_parsing(int argc, char **argv)
 	if (argc == 5 || argc == 6)
 		if (ft_digit_check(argv) == true)
 			if (ft_nb_philo_check(argv[1]) == true)
-				if (ft_args_check(argv) == true)
+				if (ft_args_check(argc, argv) == true)
 					return (true);
 	return (false);
 }

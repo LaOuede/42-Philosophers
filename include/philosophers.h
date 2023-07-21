@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 11:25:11 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/21 12:22:20 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ t_philo		*ft_init_philo(t_waiter *waiter);
 t_waiter	*ft_init_waiter(void);
 
 /* ------------------- PARSING -------------------- */
-bool		ft_args_check(char **argv);
+bool		ft_args_check(int argc, char **argv);
 bool		ft_digit_check(char **argv);
 bool		ft_nb_philo_check(char *str);
 bool		ft_parsing(int argc, char **argv);
