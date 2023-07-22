@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/22 16:01:28 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/22 16:04:23 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 //TODO : fix eat_monitoring and add sleep_monitoring
 // (see if it is possible to do only 1 function)
+
+// TODO : add a condition (if TTE > TTD or TTS > TTD) ?
+// Don't think monitoring is needed if TTE < TTD
 bool	ft_eat_monitoring(t_waiter *waiter, time_t limit, int idx)
 {
 	(void)idx;
