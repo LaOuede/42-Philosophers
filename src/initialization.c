@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/22 14:41:47 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/22 16:02:05 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_init_forks(t_waiter *waiter, t_philo *philo)
 	}
 }
 
+// TODO : philos must have numbers between 1 and n (don't start at 0)
 t_philo	*ft_init_philo(t_waiter *waiter)
 {
 	int				idx;

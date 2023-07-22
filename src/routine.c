@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/22 14:34:59 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/22 14:45:53 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ bool	ft_take_forks(t_waiter *waiter, int idx)
 			philo[idx].nbr_fork->idx = idx;
 			return (true);
 		}
+		pthread_mutex_unlock(&philo[idx].his_fork.fork);
+		pthread_mutex_unlock(&philo[idx].nbr_fork->fork);
 	}
-	pthread_mutex_unlock(&philo[idx].his_fork.fork);
-	pthread_mutex_unlock(&philo[idx].nbr_fork->fork);
 	return (true);
 }
 

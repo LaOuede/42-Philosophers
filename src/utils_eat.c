@@ -6,11 +6,14 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 19:56:59 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/22 16:01:28 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
+
+//TODO : fix eat_monitoring and add sleep_monitoring
+// (see if it is possible to do only 1 function)
 bool	ft_eat_monitoring(t_waiter *waiter, time_t limit, int idx)
 {
 	(void)idx;
