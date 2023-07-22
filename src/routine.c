@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/22 14:45:53 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/22 17:15:42 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	*ft_routine_philos(void *arg)
 			if (ft_eat(waiter, idx) == true)
 				if (ft_sleep(waiter, idx) == true)
 					if (ft_think(waiter, idx) == false)
-						break;
+						break ;
 	}
 	return (NULL);
 }

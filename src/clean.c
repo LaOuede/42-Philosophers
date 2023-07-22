@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/22 16:34:05 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/22 17:15:22 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	*ft_free_null(void *ptr)
 	return (NULL);
 }
 
-//TODO : Data races in clean_n_quit
-// need to fix that and destroy also forks mutex
 void	ft_clean_n_quit(t_waiter *waiter)
 {
 	int	i;
@@ -29,7 +27,10 @@ void	ft_clean_n_quit(t_waiter *waiter)
 	{
 		i = -1;
 		while (++i < waiter->param->nb_philo)
-			pthread_detach(waiter->philo[i].thread);
+		{
+			pthread_mutex_destroy(&waiter->philo->his_fork.fork);
+			pthread_mutex_destroy(&waiter->philo->nbr_fork->fork);
+		}
 		waiter->philo = ft_free_null(waiter->philo);
 	}
 	if (waiter->param)

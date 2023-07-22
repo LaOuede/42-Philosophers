@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/22 16:04:23 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/22 17:16:19 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 // Don't think monitoring is needed if TTE < TTD
 bool	ft_eat_monitoring(t_waiter *waiter, time_t limit, int idx)
 {
-	(void)idx;
 	time_t	time_now;
 	time_t	start_action;
 
+	(void)idx;
 	time_now = ft_timestamp_in_ms(waiter);
 	start_action = ft_timestamp_in_ms(waiter);
 /* 	printf("who's here = %d\n", idx);
