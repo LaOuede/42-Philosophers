@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 10:36:58 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/22 16:34:05 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	*ft_free_null(void *ptr)
 	return (NULL);
 }
 
+//TODO : Data races in clean_n_quit
+// need to fix that and destroy also forks mutex
 void	ft_clean_n_quit(t_waiter *waiter)
 {
 	int	i;
