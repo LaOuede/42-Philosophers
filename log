@@ -1,144 +1,72 @@
-i = 0
-philo = 3
-value his 0 = -1
-value nbr 0 = -1
-i = 1
-philo = 3
-value his 1 = -1
-value nbr 1 = -1
-i = 2
-philo = 3
-value his 2 = -1
-value nbr 2 = -1
-i = 3
-philo = 3
-0 = -1
-value his 3 = -1
-value nbr 3 = -1
-Philo[3] try to take forks
-philo[3].his_fork.idx = -1
-philo[3].nbr_fork->idx = -1
-philo[3].his_fork.idx = 0x13f606d88
-philo[3].nbr_fork->idx = 0x13f606c08
-Philo[1] try to take forks
-philo[1].his_fork.idx = -1
-philo[1].nbr_fork->idx = -1
-philo[1].his_fork.idx = 0x13f606c88
-philo[1].nbr_fork->idx = 0x13f606d08
-1 2 [32mis thinking[1;0m
-1 0 [32mis thinking[1;0m
-1 3 [34mhas taken a fork[1;0m
-1 3 [34mhas taken a fork[1;0m
+0 3 [34mhas taken a fork[1;0m
+0 3 [34mhas taken a fork[1;0m
 1 3 [31mis eating[1;0m
+1 2 [32mis thinking[1;0m
 1 1 [34mhas taken a fork[1;0m
 1 1 [34mhas taken a fork[1;0m
 1 1 [31mis eating[1;0m
-Philo[2] try to take forks
-Philo[0] try to take forks
-philo[2].his_fork.idx = -1
-philo[2].nbr_fork->idx = -1
-philo[2].his_fork.idx = 0x13f606d08
-philo[2].nbr_fork->idx = 0x13f606d88
-202 2 [34mhas taken a fork[1;0m
-philo[0].his_fork.idx = -1
-philo[0].nbr_fork->idx = -1
-philo[0].his_fork.idx = 0x13f606c08
-philo[0].nbr_fork->idx = 0x13f606c88
-202 2 [34mhas taken a fork[1;0m
-202 2 [31mis eating[1;0m
+1 0 [32mis thinking[1;0m
+202 1 [33mis sleeping[1;0m
 202 0 [34mhas taken a fork[1;0m
 202 0 [34mhas taken a fork[1;0m
 202 0 [31mis eating[1;0m
-202 1 [33mis sleeping[1;0m
 202 3 [33mis sleeping[1;0m
+202 2 [34mhas taken a fork[1;0m
+202 2 [34mhas taken a fork[1;0m
+202 2 [31mis eating[1;0m
 402 3 [32mis thinking[1;0m
-Philo[3] try to take forks
 402 1 [32mis thinking[1;0m
-Philo[1] try to take forks
-philo[3].his_fork.idx = -1
-philo[3].nbr_fork->idx = -1
-philo[3].his_fork.idx = 0x13f606d88
-philo[3].nbr_fork->idx = 0x13f606c08
+403 2 [33mis sleeping[1;0m
+403 0 [33mis sleeping[1;0m
 403 3 [34mhas taken a fork[1;0m
 403 3 [34mhas taken a fork[1;0m
-philo[1].his_fork.idx = -1
-philo[1].nbr_fork->idx = -1
-philo[1].his_fork.idx = 0x13f606c88
-philo[1].nbr_fork->idx = 0x13f606d08
 403 3 [31mis eating[1;0m
 403 1 [34mhas taken a fork[1;0m
 403 1 [34mhas taken a fork[1;0m
 403 1 [31mis eating[1;0m
-403 2 [33mis sleeping[1;0m
-403 0 [33mis sleeping[1;0m
-603 2 [32mis thinking[1;0m
-Philo[2] try to take forks
 603 0 [32mis thinking[1;0m
-Philo[0] try to take forks
-philo[0].his_fork.idx = -1
-philo[0].nbr_fork->idx = -1
-philo[0].his_fork.idx = 0x13f606c08
-philo[0].nbr_fork->idx = 0x13f606c88
-604 0 [34mhas taken a fork[1;0m
-604 0 [34mhas taken a fork[1;0m
-604 0 [31mis eating[1;0m
-philo[2].his_fork.idx = -1
-philo[2].nbr_fork->idx = -1
-philo[2].his_fork.idx = 0x13f606d08
-philo[2].nbr_fork->idx = 0x13f606d88
+603 2 [32mis thinking[1;0m
+604 1 [33mis sleeping[1;0m
+604 3 [33mis sleeping[1;0m
 604 2 [34mhas taken a fork[1;0m
 604 2 [34mhas taken a fork[1;0m
 604 2 [31mis eating[1;0m
-604 3 [33mis sleeping[1;0m
-604 1 [33mis sleeping[1;0m
-804 1 [32mis thinking[1;0m
-Philo[1] try to take forks
+604 0 [34mhas taken a fork[1;0m
+604 0 [34mhas taken a fork[1;0m
+604 0 [31mis eating[1;0m
 804 3 [32mis thinking[1;0m
-Philo[3] try to take forks
-philo[1].his_fork.idx = -1
-philo[1].nbr_fork->idx = -1
-philo[1].his_fork.idx = 0x13f606c88
-philo[1].nbr_fork->idx = 0x13f606d08
-philo[3].his_fork.idx = -1
-philo[3].nbr_fork->idx = -1
-philo[3].his_fork.idx = 0x13f606d88
-philo[3].nbr_fork->idx = 0x13f606c08
+804 1 [32mis thinking[1;0m
+805 0 [33mis sleeping[1;0m
 805 1 [34mhas taken a fork[1;0m
 805 1 [34mhas taken a fork[1;0m
 805 1 [31mis eating[1;0m
+805 2 [33mis sleeping[1;0m
 805 3 [34mhas taken a fork[1;0m
 805 3 [34mhas taken a fork[1;0m
 805 3 [31mis eating[1;0m
-805 2 [33mis sleeping[1;0m
-805 0 [33mis sleeping[1;0m
-1005 0 [32mis thinking[1;0m
-Philo[0] try to take forks
 1005 2 [32mis thinking[1;0m
-Philo[2] try to take forks
-philo[2].his_fork.idx = -1
-philo[2].nbr_fork->idx = -1
-philo[2].his_fork.idx = 0x13f606d08
-philo[2].nbr_fork->idx = 0x13f606d88
-philo[0].his_fork.idx = -1
-philo[0].nbr_fork->idx = -1
-philo[0].his_fork.idx = 0x13f606c08
-philo[0].nbr_fork->idx = 0x13f606c88
-1006 2 [34mhas taken a fork[1;0m
-1006 2 [34mhas taken a fork[1;0m
-1006 2 [31mis eating[1;0m
+1005 0 [32mis thinking[1;0m
+1006 1 [33mis sleeping[1;0m
 1006 0 [34mhas taken a fork[1;0m
 1006 0 [34mhas taken a fork[1;0m
 1006 0 [31mis eating[1;0m
-1006 1 [33mis sleeping[1;0m
+1006 2 [34mhas taken a fork[1;0m
+1006 2 [34mhas taken a fork[1;0m
+1006 2 [31mis eating[1;0m
 1006 3 [33mis sleeping[1;0m
 1206 1 [32mis thinking[1;0m
-Philo[1] try to take forks
 1206 3 [32mis thinking[1;0m
-Philo[3] try to take forks
-philo[3].his_fork.idx = -1
-philo[3].nbr_fork->idx = -1
-philo[3].his_fork.idx = 0x13f606d88
-philo[3].nbr_fork->idx = 0x13f606c08
+1207 0 [33mis sleeping[1;0m
+1207 2 [33mis sleeping[1;0m
 1207 3 [34mhas taken a fork[1;0m
 1207 3 [34mhas taken a fork[1;0m
-120
+1207 3 [31mis eating[1;0m
+1207 1 [34mhas taken a fork[1;0m
+1207 1 [34mhas taken a fork[1;0m
+1207 1 [31mis eating[1;0m
+1407 2 [32mis thinking[1;0m
+1407 0 [32mis thinking[1;0m
+1408 3 [33mis sleeping[1;0m
+1408 1 [33mis sleeping[1;0m
+1408 0 [34mhas taken a fork[1;0m
+1408 0 [34mhas taken a fork[1;0m

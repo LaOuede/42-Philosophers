@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 21:33:04 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/22 14:41:47 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_init_forks(t_waiter *waiter, t_philo *philo)
 	i = -1;
 	while (++i < waiter->param->nb_philo)
 	{
+		philo[i].his_fork.idx = -1;
 		pthread_mutex_init(&philo[i].his_fork.fork, NULL);
 /* 		printf("i = %d\n", i);
 		printf("philo = %d\n", waiter->param->nb_philo - 1); */
@@ -29,7 +30,6 @@ void	ft_init_forks(t_waiter *waiter, t_philo *philo)
 			//printf("0 = %d\n", philo[0].his_fork.idx);
 			philo[i].nbr_fork = &philo[0].his_fork;
 		}
-		philo[i].his_fork.idx = -1;
 /* 		printf("value his %d = %d\n", i, philo[i].his_fork.idx);
 		printf("value nbr %d = %d\n", i, philo[i].nbr_fork->idx); */
 		pthread_mutex_init(&philo[i].nbr_fork->fork, NULL);

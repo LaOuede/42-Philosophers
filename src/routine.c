@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 21:32:53 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/22 14:34:59 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ bool	ft_sleep(t_waiter *waiter, int idx)
 bool	ft_eat(t_waiter *waiter, int idx)
 {
 	waiter->philo[idx].eating = true;
-	pthread_mutex_lock(&waiter->philo[idx].his_fork.fork);
-	pthread_mutex_lock(&waiter->philo[idx].nbr_fork->fork);
 	if (ft_check_meals(waiter, idx) == true)
 	{
 		if (ft_print_msg(waiter, idx, EAT))
@@ -69,20 +67,10 @@ bool	ft_take_forks(t_waiter *waiter, int idx)
 	t_philo	*philo;
 
 	philo = ft_init_philo(0);
-/* 	if (ft_print_msg(waiter, idx, THINK) == 1)
-	{
-		printf("Philo[%d] died thinking!\n", idx);
-		return (false);
-	} */
-	printf("Philo[%d] try to take forks\n", idx);
 	while (42)
 	{
 		pthread_mutex_lock(&philo[idx].his_fork.fork);
 		pthread_mutex_lock(&philo[idx].nbr_fork->fork);
-/* 		printf("philo[%d].his_fork.idx = %d\n", idx, philo[idx].his_fork.idx);
-		printf("philo[%d].nbr_fork->idx = %d\n", idx, philo[idx].nbr_fork->idx);
-		printf("philo[%d].his_fork.idx = %p\n", idx, &philo[idx].his_fork.idx);
-		printf("philo[%d].nbr_fork->idx = %p\n", idx, &philo[idx].nbr_fork->idx); */
 		if (philo[idx].his_fork.idx == -1 \
 			&& philo[idx].nbr_fork->idx == -1)
 		{
@@ -98,17 +86,9 @@ bool	ft_take_forks(t_waiter *waiter, int idx)
 				return (false);
 			}
 			philo[idx].nbr_fork->idx = idx;
-			pthread_mutex_unlock(&philo[idx].his_fork.fork);
-			pthread_mutex_unlock(&philo[idx].nbr_fork->fork);
 			return (true);
 		}
-		else
-		{
-			pthread_mutex_unlock(&philo[idx].his_fork.fork);
-			pthread_mutex_unlock(&philo[idx].nbr_fork->fork);
-		}
 	}
-	//printf("I'm philo[%d] and I'm lost!!\n", idx);
 	pthread_mutex_unlock(&philo[idx].his_fork.fork);
 	pthread_mutex_unlock(&philo[idx].nbr_fork->fork);
 	return (true);
@@ -121,18 +101,6 @@ void	*ft_routine_philos(void *arg)
 
 	idx = *(int *)arg;
 	waiter = ft_init_waiter();
-/* 	printf("philo[0].his_fork.idx = %p\n", &waiter->philo[0].his_fork.idx);
-	printf("philo[0].nbr_fork->idx = %p\n", &waiter->philo[0].nbr_fork->idx);
-	printf("philo[1].his_fork.idx = %p\n", &waiter->philo[1].his_fork.idx);
-	printf("philo[1].nbr_fork->idx = %p\n", &waiter->philo[1].nbr_fork->idx);
-	printf("philo[2].his_fork.idx = %p\n", &waiter->philo[2].his_fork.idx);
-	printf("philo[2].nbr_fork->idx = %p\n", &waiter->philo[2].nbr_fork->idx);
-	printf("philo[3].his_fork.idx = %p\n", &waiter->philo[3].his_fork.idx);
-	printf("philo[3].nbr_fork->idx = %p\n", &waiter->philo[3].nbr_fork->idx);
-	printf("philo[%d].his_fork.idx = %d\n", idx, waiter->philo[idx].his_fork.idx);
-	printf("philo[%d].nbr_fork->idx = %d\n", idx, waiter->philo[idx].nbr_fork->idx);
-	printf("philo[%d].his_fork.idx = %d\n", idx, waiter->philo[idx].his_fork.idx);
-	printf("philo[%d].nbr_fork->idx = %d\n", idx, waiter->philo[idx].nbr_fork->idx); */
 	pthread_mutex_lock(&waiter->start);
 	pthread_mutex_unlock(&waiter->start);
 	//ft_print_msg(waiter, idx, CREA);
@@ -143,19 +111,19 @@ void	*ft_routine_philos(void *arg)
 	}
 	while (42)
 	{
-		if (ft_take_forks(waiter, idx) == false)
+/* 		if (ft_take_forks(waiter, idx) == false)
 			break ;
 		if (ft_eat(waiter, idx) == false)
 			break ;
 		if (ft_sleep(waiter, idx) == false)
 			break ;
 		if (ft_think(waiter, idx) == false)
-			break;
-/* 		if (ft_take_forks(waiter, idx) == true)
+			break; */
+		if (ft_take_forks(waiter, idx) == true)
 			if (ft_eat(waiter, idx) == true)
 				if (ft_sleep(waiter, idx) == true)
 					if (ft_think(waiter, idx) == false)
-						break; */
+						break;
 	}
 	return (NULL);
 }
