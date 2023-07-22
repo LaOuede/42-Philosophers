@@ -3,22 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   utils_eat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 12:41:37 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/21 19:56:59 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
-bool	ft_smart_eat(t_waiter *waiter, int idx)
+bool	ft_eat_monitoring(t_waiter *waiter, time_t limit, int idx)
 {
 	(void)idx;
-	if (waiter->param->ms_eat >= waiter->param->ms_die)
+	time_t	time_now;
+	time_t	start_action;
+
+	time_now = ft_timestamp_in_ms(waiter);
+	start_action = ft_timestamp_in_ms(waiter);
+/* 	printf("who's here = %d\n", idx);
+	printf("time_now = %ld\n", time_now);
+	printf("start_action = %ld\n", start_action);
+	printf("limit = %ld\n", limit); */
+	while (time_now - waiter->philo[idx].last_meal <= limit)
 	{
-		;
+		//printf("time_now = %ld\n", time_now);
+		start_action = time_now - waiter->philo[idx].last_meal;
+		if (start_action >= waiter->param->ms_die)
+		{
+			waiter->philo[idx].dead = true;
+			if (ft_print_msg(waiter, idx, DIED) == 1)
+			{
+				printf("TEST\n");
+				return (false);
+			}
+			return (false);
+		}
+		usleep(100);
+		time_now = ft_timestamp_in_ms(waiter);
 	}
-	ft_usleep(waiter->param->ms_eat);
 	return (true);
 }
 
@@ -42,10 +63,10 @@ bool	ft_all_sated(t_waiter *waiter)
 
 bool	ft_check_meals(t_waiter *waiter, int idx)
 {
-	printf("philo[%d]\n", idx);
-	printf("philo[%d] meals = %d\n", idx, waiter->philo[idx].meals);
+	//printf("philo[%d]\n", idx);
+	//printf("philo[%d] meals = %d\n", idx, waiter->philo[idx].meals);
 	waiter->philo[idx].meals += 1;
-	printf("philo[%d] meals = %d\n", idx, waiter->philo[idx].meals);
+	//printf("philo[%d] meals = %d\n", idx, waiter->philo[idx].meals);
 	if (waiter->philo[idx].meals == waiter->param->nb_meals)
 		if (ft_all_sated(waiter) == true)
 			return (false);

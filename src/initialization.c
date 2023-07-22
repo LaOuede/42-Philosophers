@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 08:26:30 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/21 21:33:04 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,19 @@ void	ft_init_forks(t_waiter *waiter, t_philo *philo)
 	i = -1;
 	while (++i < waiter->param->nb_philo)
 	{
-		philo[i].his_fork.taken = false;
 		pthread_mutex_init(&philo[i].his_fork.fork, NULL);
+/* 		printf("i = %d\n", i);
+		printf("philo = %d\n", waiter->param->nb_philo - 1); */
 		if (i < waiter->param->nb_philo)
 			philo[i].nbr_fork = &philo[i + 1].his_fork;
-		else if (i == waiter->param->nb_philo - 1)
-			waiter->philo[i].nbr_fork = &waiter->philo[0].his_fork;
+		if (i == waiter->param->nb_philo - 1)
+		{
+			//printf("0 = %d\n", philo[0].his_fork.idx);
+			philo[i].nbr_fork = &philo[0].his_fork;
+		}
+		philo[i].his_fork.idx = -1;
+/* 		printf("value his %d = %d\n", i, philo[i].his_fork.idx);
+		printf("value nbr %d = %d\n", i, philo[i].nbr_fork->idx); */
 		pthread_mutex_init(&philo[i].nbr_fork->fork, NULL);
 	}
 }
@@ -45,6 +52,7 @@ t_philo	*ft_init_philo(t_waiter *waiter)
 			philo[idx].eating = false;
 			philo[idx].thinking = false;
 			philo[idx].sleeping = false;
+			philo[idx].his_fork.idx = -1;
 			philo[idx].dead = false;
 			philo[idx].meals = 0;
 			philo[idx].last_meal = 0;
@@ -73,9 +81,9 @@ t_param	*ft_init_param(int argc, char **argv)
 		{
 			printf(KYEL "---------- "KGRN"INIT_PARAM"KYEL"----------\n" RT);
 			printf(" * param->nb_philo = %d\n", param->nb_philo);
-			printf(" * param->ms_die = %d\n", param->ms_die);
-			printf(" * param->ms_eat = %d\n", param->ms_eat);
-			printf(" * param->ms_sleep = %d\n", param->ms_sleep);
+			printf(" * param->ms_die = %ld\n", param->ms_die);
+			printf(" * param->ms_eat = %ld\n", param->ms_eat);
+			printf(" * param->ms_sleep = %ld\n", param->ms_sleep);
 			printf(" * param->nb_meals = %d\n", param->nb_meals);
 		}
 	}

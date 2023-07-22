@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_death.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 10:46:18 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/21 16:08:27 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ bool	ft_still_standing(t_waiter *waiter, int idx)
 	time_t	timestamp;
 
 	timestamp = ft_timestamp_in_ms(waiter);
+	if (waiter->philo[idx].dead == true)
+	{
+		waiter->all_alive = false;
+		return (false);
+	}
 	if (timestamp - waiter->philo[idx].last_meal >= waiter->param->ms_die)
 	{
 		waiter->philo[idx].dead = true;

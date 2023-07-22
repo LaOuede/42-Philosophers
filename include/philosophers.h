@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 12:22:20 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/21 19:58:13 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,16 @@
 typedef struct s_fork
 {
 	pthread_mutex_t	fork;
-	bool			taken;
+	int				idx;
 }t_fork;
 
 typedef struct s_param
 {
-	int	nb_philo;
-	int	ms_die;
-	int	ms_eat;
-	int	ms_sleep;
-	int	nb_meals;
+	int		nb_philo;
+	time_t	ms_die;
+	time_t	ms_eat;
+	time_t	ms_sleep;
+	int		nb_meals;
 }t_param;
 
 typedef struct s_philo
@@ -113,12 +113,13 @@ bool		ft_parsing(int argc, char **argv);
 bool		ft_check_meals(t_waiter *waiter, int idx);
 int			ft_diner(t_waiter *waiter);
 bool		ft_eat(t_waiter *waiter, int idx);
+bool		ft_eat_monitoring(t_waiter *waiter, time_t limit, int idx);
 bool		ft_join_threads(t_waiter *waiter);
 void		*ft_routine_philos(void *arg);
 void		*ft_routine_philo_alone(void *arg);
 bool		ft_sleep(t_waiter *waiter, int idx);
 int			ft_the_one_and_only(t_waiter *waiter);
-bool		ft_think_n_forks(t_waiter *waiter, int idx);
+bool		ft_take_forks(t_waiter *waiter, int idx);
 
 /* -------------------- UTILS --------------------- */
 int			ft_atoi(const char *str);
@@ -132,7 +133,6 @@ bool		ft_still_standing(t_waiter *waiter, int idx);
 
 /* ------------------ UTILS EAT ------------------- */
 bool		ft_check_meals(t_waiter *waiter, int idx);
-bool		ft_smart_eat(t_waiter *waiter, int idx);
 
 /* ------------------UTILS PRINT------------------- */
 int			ft_print_msg(t_waiter *waiter, int idx, char *msg);
