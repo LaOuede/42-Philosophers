@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/22 17:15:22 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/23 17:55:13 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,16 @@ void	ft_clean_n_quit(t_waiter *waiter)
 
 	if (waiter->philo)
 	{
-		i = -1;
-		while (++i < waiter->param->nb_philo)
+		i = 0;
+		if (waiter->param->nb_philo > 1)
 		{
-			pthread_mutex_destroy(&waiter->philo->his_fork.fork);
-			pthread_mutex_destroy(&waiter->philo->nbr_fork->fork);
+			while (++i < waiter->param->nb_philo)
+			{
+				pthread_mutex_destroy(&waiter->philo->his_fork.fork);
+				pthread_mutex_destroy(&waiter->philo->nbr_fork->fork);
+			}
 		}
+		ft_join_threads(waiter, waiter->philo);
 		waiter->philo = ft_free_null(waiter->philo);
 	}
 	if (waiter->param)

@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 19:58:13 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/23 16:15:54 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ bool		ft_check_meals(t_waiter *waiter, int idx);
 int			ft_diner(t_waiter *waiter);
 bool		ft_eat(t_waiter *waiter, int idx);
 bool		ft_eat_monitoring(t_waiter *waiter, time_t limit, int idx);
-bool		ft_join_threads(t_waiter *waiter);
+bool		ft_join_threads(t_waiter *waiter, t_philo *philo);
 void		*ft_routine_philos(void *arg);
 void		*ft_routine_philo_alone(void *arg);
 bool		ft_sleep(t_waiter *waiter, int idx);

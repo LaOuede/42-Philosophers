@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/22 17:29:12 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/23 16:18:29 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,20 @@ bool	ft_still_standing(t_waiter *waiter, int idx)
 
 bool	ft_night_watch(t_waiter *waiter, int idx)
 {
-	int	i;
+	//int	i;
 
 	pthread_mutex_lock(&waiter->dead);
 	if (ft_still_standing(waiter, idx) == false || waiter->all_alive == false)
 	{
-		i = -1;
+/* 		i = -1;
 		while (++i < waiter->param->nb_philo)
-			pthread_detach(waiter->philo[i].thread);
+			pthread_join(waiter->philo[i].thread, NULL);
+		usleep(5000); */
+/* 		i = -1;
+		while (++i < waiter->param->nb_philo)
+			pthread_detach(waiter->philo[i].thread); */
+		//usleep(5000);
 		pthread_mutex_unlock(&waiter->dead);
-		usleep(5000);
 		return (false);
 	}
 	pthread_mutex_unlock(&waiter->dead);

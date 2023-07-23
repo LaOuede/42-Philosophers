@@ -6,22 +6,24 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/22 17:31:23 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/23 17:40:32 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
 // TODO : pb with join because nightwatch detach before!
-bool	ft_join_threads(t_waiter *waiter)
+bool	ft_join_threads(t_waiter *waiter, t_philo *philo)
 {
 	int	i;
 
 	i = -1;
 	while (++i < waiter->param->nb_philo)
 	{
-		if (pthread_join(waiter->philo[i].thread, NULL))
-			return (false);
+		printf("Philo[%d]\n", i);
+		pthread_join(philo[i].thread, NULL);
+/* 		if (pthread_join(waiter->philo[i].thread, NULL))
+			return (false); */
 	}
 	usleep(4000);
 	return (true);
@@ -58,9 +60,10 @@ int	ft_diner(t_waiter *waiter)
 		if (ft_create_threads(waiter) == true)
 			while (ft_death_watchtower(waiter) == true)
 				continue ;
-		if (ft_join_threads(waiter) == true)
-			return (0);
 	}
+/* 	if (ft_join_threads(waiter, waiter->philo) == true)
+		return (0); */
+	usleep(5000);
 	return (1);
 }
 

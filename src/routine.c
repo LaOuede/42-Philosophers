@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/22 17:15:42 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/23 16:25:38 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ bool	ft_eat(t_waiter *waiter, int idx)
 			waiter->philo[idx].nbr_fork->idx = -1;
 			pthread_mutex_unlock(&waiter->philo[idx].his_fork.fork);
 			pthread_mutex_unlock(&waiter->philo[idx].nbr_fork->fork);
-			usleep(500);
+			//usleep(500);
 			return (true);
 		}
 	}
@@ -91,7 +91,7 @@ bool	ft_take_forks(t_waiter *waiter, int idx)
 		pthread_mutex_unlock(&philo[idx].his_fork.fork);
 		pthread_mutex_unlock(&philo[idx].nbr_fork->fork);
 	}
-	return (true);
+	return (false);
 }
 
 void	*ft_routine_philos(void *arg)
@@ -125,5 +125,6 @@ void	*ft_routine_philos(void *arg)
 					if (ft_think(waiter, idx) == false)
 						break ;
 	}
+	usleep(5000);
 	return (NULL);
 }
