@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/23 17:55:25 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/23 18:05:41 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	ft_print_msg(t_waiter *waiter, int idx, char *msg)
 	}
 	timestamp = ft_timestamp_in_ms(waiter);
 	printf("%ld %d %s\n", timestamp, idx, DIED);
-	printf("Philo[%d] died!\n", idx);
 	return (1);
 }
 

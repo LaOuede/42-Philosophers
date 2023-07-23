@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/23 17:55:13 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/23 18:05:19 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_clean_n_quit(t_waiter *waiter)
 				pthread_mutex_destroy(&waiter->philo->nbr_fork->fork);
 			}
 		}
-		ft_join_threads(waiter, waiter->philo);
+		//ft_join_threads(waiter, waiter->philo);
 		waiter->philo = ft_free_null(waiter->philo);
 	}
 	if (waiter->param)
