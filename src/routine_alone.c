@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 15:41:44 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/24 16:22:13 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	*ft_routine_philo_alone(void *arg)
 
 int	ft_the_one_and_only(t_philo *philo, pthread_t *thread)
 {
-	philo->start_time = ft_get_time();
 	if (pthread_create(&thread[0], NULL, \
 		&ft_routine_philo_alone, &philo[0]))
 		return (1);

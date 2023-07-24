@@ -6,32 +6,24 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 15:41:07 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/24 16:20:39 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-void	ft_init_forks(t_waiter *waiter, t_philo *philo)
+void	ft_init_forks(t_philo *philo)
 {
 	int	i;
 
 	i = -1;
-	while (++i < waiter->nb_philo)
+	while (++i < philo->nb_philo)
 	{
-		philo[i].his_fork.idx = -1;
 		pthread_mutex_init(&philo[i].his_fork.fork, NULL);
-/* 		printf("i = %d\n", i);
-		printf("philo = %d\n", waiter->param->nb_philo - 1); */
-		if (i < waiter->nb_philo)
+		if (i < philo->nb_philo)
 			philo[i].nbr_fork = &philo[i + 1].his_fork;
-		if (i == waiter->nb_philo - 1)
-		{
-			//printf("0 = %d\n", philo[0].his_fork.idx);
+		if (i == philo->nb_philo - 1)
 			philo[i].nbr_fork = &philo[0].his_fork;
-		}
-/* 		printf("value his %d = %d\n", i, philo[i].his_fork.idx);
-		printf("value nbr %d = %d\n", i, philo[i].nbr_fork->idx); */
 		pthread_mutex_init(&philo[i].nbr_fork->fork, NULL);
 	}
 }
@@ -52,20 +44,21 @@ void	ft_init_philo(t_waiter *waiter, t_philo *philo)
 		philo[idx].nb_meals = waiter->nb_meals;
 		philo[idx].am_i_dead = &waiter->all_alive;
 		philo[idx].sated = &waiter->sated;
-		philo[idx].start_time = waiter->start_time;
+		philo[idx].start_time = &waiter->start_time;
+		philo[idx].his_fork.idx = -1;
 		philo[idx].eating = false;
 		philo[idx].thinking = false;
 		philo[idx].sleeping = false;
 		philo[idx].meals = 0;
 		philo[idx].last_meal = 0;
-		philo[idx].start = &waiter->start;
-		philo[idx].eat = &waiter->eat;
-		philo[idx].dead = &waiter->dead;
-		philo[idx].print = &waiter->print;
+		philo[idx].mutex_start = &waiter->start;
+		philo[idx].mutex_eat = &waiter->eat;
+		philo[idx].mutex_dead = &waiter->dead;
+		philo[idx].mutex_print = &waiter->print;
 	}
 	if (DEBUG)
 	{
-		printf(KYEL "---------- "KGRN"UTILS_TIME"KYEL" ----------\n" RT);
+		printf(KYEL "---------- "KGRN"INIT_PHILOS"KYEL" ----------\n" RT);
 		printf("idx = %d\n", philo->idx);
 		printf("nb_philo = %d\n", philo->nb_philo);
 		printf("ms_die = %ld\n", philo->ms_die);
@@ -74,7 +67,8 @@ void	ft_init_philo(t_waiter *waiter, t_philo *philo)
 		printf("nb_meals = %d\n", philo->nb_meals);
 		printf("am_i_dead = %d\n", *philo->am_i_dead);
 		printf("sated = %d\n", *philo->sated);
-		printf("start_time = %ld\n", philo->start_time);
+		printf("start_time = %ld\n", *philo->start_time);
+		printf("his fork = %d\n", philo->his_fork.idx);
 		printf("meals = %d\n", philo->meals);
 		printf("last_meal = %ld\n", philo->last_meal);
 	}
@@ -99,7 +93,7 @@ void	ft_init_waiter(t_waiter *waiter, int argc, char **argv)
 	waiter->sated = false;
 	if (DEBUG)
 	{
-		printf(KYEL "---------- "KGRN"UTILS_TIME"KYEL" ----------\n" RT);
+		printf(KYEL "---------- "KGRN"INIT_WAITER"KYEL" ----------\n" RT);
 		printf("nb_philo = %d\n", waiter->nb_philo);
 		printf("ms_die = %ld\n", waiter->ms_die);
 		printf("ms_eat = %ld\n", waiter->ms_eat);

@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 15:21:38 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/24 16:23:27 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,23 @@ bool	ft_take_forks(t_philo *philo, int idx)
 		pthread_mutex_unlock(&philo[idx].nbr_fork->fork);
 	}
 	return (false);
-}
+} */
 
 void	*ft_routine_philos(void *arg)
 {
 	t_philo		*philo;
 
 	philo = (t_philo *)arg;
-	pthread_mutex_lock(&philo->start);
-	pthread_mutex_unlock(&philo->start);
+	pthread_mutex_lock(philo->mutex_start);
+	pthread_mutex_unlock(philo->mutex_start);
+	if (DEBUG)
+		printf("philo[%d] created\n", philo->idx);
 	if (!(philo->idx & 1))
 	{
-		ft_print_msg(philo->idx, THINK);
+		ft_print_msg(philo, philo->idx, THINK);
 		ft_usleep(philo->ms_eat / 2);
 	}
-	while (42)
+/* 	while (42)
 	{
 		if (ft_take_forks(philo, philo->idx) == false)
 			break ;
@@ -99,6 +101,6 @@ void	*ft_routine_philos(void *arg)
 			break ;
 		if (ft_think(philo, philo->idx) == false)
 			break ;
-	}
+	} */
 	return (arg);
-} */
+}

@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 15:24:18 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/24 16:22:56 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ time_t	ft_timestamp_in_ms(t_philo *philo)
 	time_t		time_now;
 
 	time_now = ft_get_time();
-	time = time_now - philo->start_time;
+	time = time_now - *philo->start_time;
 	if (DEBUG)
 	{
 		printf(KYEL "---------- "KGRN"UTILS_TIME"KYEL" ----------\n" RT);
-		printf("start_time = %ld\n", philo->start_time);
+		printf("start_time = %ld\n", *philo->start_time);
 		printf("time_now = %ld\n", time_now);
 		printf("dif_time = %ld ms\n", time);
 	}
