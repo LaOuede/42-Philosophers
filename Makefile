@@ -6,7 +6,7 @@
 #    By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/07/24 16:05:52 by gwenolalero      ###   ########.fr        #
+#    Updated: 2023/07/24 18:44:58 by gwenolalero      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,8 +56,8 @@ export HELP
 
 # Compiler and flags
 CC		=	gcc
-CFLAGS	= 	-g -Wall -Wextra -Werror 
-#CFLAGS	= 	-fsanitize=address
+#CFLAGS	= 	-g -Wall -Wextra -Werror 
+CFLAGS	= 	-fsanitize=address
 #CFLAGS	=	-fsanitize=thread
 
 # Remove

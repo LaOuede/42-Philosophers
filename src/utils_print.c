@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 16:24:47 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/24 19:43:29 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,28 @@ void	ft_putstr_fd(char *str, int fd)
 		write(fd, &str[i], 1);
 }
 
-int	ft_print_msg(t_philo *philo, int idx, char *msg)
+int	ft_print_msg(t_philo *philo, char *msg)
 {
-	time_t	timestamp;
+	t_waiter	*waiter;
+	time_t		timestamp;
 
+	waiter = ft_get_waiter(NULL);
 	pthread_mutex_lock(philo->mutex_print);
-/* 	if (ft_still_standing(philo, idx) == true || waiter->all_alive == true)
-	{ */
+	if (waiter->all_alive == true)
+	{
+		if (philo->am_i_dead == false)
+		{
+			timestamp = ft_timestamp_in_ms(philo);
+			printf("%ld %d %s\n", timestamp, philo->idx + 1, msg);
+			pthread_mutex_unlock(philo->mutex_print);
+			return (0);
+		}
+		waiter->all_alive = false;
 		timestamp = ft_timestamp_in_ms(philo);
-		printf("%ld %d %s\n", timestamp, idx + 1, msg);
+		printf("%ld %d %s\n", timestamp, philo->idx + 1, DIED);
 		pthread_mutex_unlock(philo->mutex_print);
-		return (0);
-/* 	}
-	timestamp = ft_timestamp_in_ms(philo);
-	printf("%ld %d %s\n", timestamp, idx + 1, DIED);
+		return (1);
+	}
 	pthread_mutex_unlock(philo->mutex_print);
-	return (1); */
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 15:21:10 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/24 19:45:15 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,64 +17,51 @@
 
 // TODO : add a condition (if TTE > TTD or TTS > TTD) ?
 // Don't think monitoring is needed if TTE < TTD
-/* bool	ft_eat_monitoring(t_waiter *waiter, t_philo *philo, time_t limit, int idx)
+bool	ft_monitoring(t_philo *philo, time_t limit)
 {
-	time_t	time_now;
 	time_t	start_action;
 
-	(void)idx;
-	time_now = ft_timestamp_in_ms(waiter);
-	start_action = ft_timestamp_in_ms(waiter);
-	printf("who's here = %d\n", idx);
-	printf("time_now = %ld\n", time_now);
-	printf("start_action = %ld\n", start_action);
-	printf("limit = %ld\n", limit);
-	while (time_now - philo[idx].last_meal <= limit)
+	start_action = ft_timestamp_in_ms(philo);
+	while (ft_timestamp_in_ms(philo) - start_action < limit)
 	{
-		//printf("time_now = %ld\n", time_now);
-		start_action = time_now - philo[idx].last_meal;
-		if (start_action >= waiter->ms_die)
+		if (ft_timestamp_in_ms(philo) > philo->ms_die)
 		{
-			philo[idx].dead = true;
-			if (ft_print_msg(waiter, philo, idx, DIED) == 1)
-			{
-				printf("TEST\n");
+			philo->am_i_dead = true;
+			if (ft_print_msg(philo, DIED) == 1)
 				return (false);
-			}
 			return (false);
 		}
 		usleep(100);
-		time_now = ft_timestamp_in_ms(waiter);
 	}
 	return (true);
 }
 
-bool	ft_all_sated(t_waiter *waiter, t_philo *philo)
+/* bool	ft_all_sated(t_philo *philo)
 {
 	int	i;
 
 	i = -1;
-	while (++i < waiter->nb_philo)
+	while (++i < philo->nb_philo)
 	{
-		if (philo[i].meals != waiter->nb_meals)
+		if (philo[i].meals != philo->nb_meals)
 			break ;
-		pthread_mutex_lock(&waiter->eat);
-		waiter->sated = true;
-		pthread_mutex_unlock(&waiter->eat);
+		pthread_mutex_lock(philo->mutex_eat);
+		philo[i].sated = 1;
+		pthread_mutex_unlock(philo->mutex_eat);
 		return (true);
 	}
 	return (false);
-}
+} */
 
-bool	ft_check_meals(t_waiter *waiter, t_philo *philo, int idx)
+/* bool	ft_check_meals(t_philo *philo, int idx)
 {
 	//printf("philo[%d]\n", idx);
 	//printf("philo[%d] meals = %d\n", idx, waiter->philo[idx].meals);
 	philo[idx].meals += 1;
 	//printf("philo[%d] meals = %d\n", idx, waiter->philo[idx].meals);
-	if (philo[idx].meals >= waiter->nb_meals)
+	if (philo[idx].meals >= philo->nb_meals)
 	{
-		if (ft_all_sated(waiter, philo) == true)
+		if (ft_all_sated(philo) == true)
 			return (false);
 	}
 	return (true);

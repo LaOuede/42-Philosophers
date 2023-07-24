@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 16:20:39 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/24 19:31:35 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_init_philo(t_waiter *waiter, t_philo *philo)
 		philo[idx].ms_eat = waiter->ms_eat;
 		philo[idx].ms_sleep = waiter->ms_sleep;
 		philo[idx].nb_meals = waiter->nb_meals;
-		philo[idx].am_i_dead = &waiter->all_alive;
+		philo[idx].am_i_dead = false;
 		philo[idx].sated = &waiter->sated;
 		philo[idx].start_time = &waiter->start_time;
 		philo[idx].his_fork.idx = -1;
@@ -65,7 +65,7 @@ void	ft_init_philo(t_waiter *waiter, t_philo *philo)
 		printf("ms_eat = %ld\n", philo->ms_eat);
 		printf("ms_sleep = %ld\n", philo->ms_sleep);
 		printf("nb_meals = %d\n", philo->nb_meals);
-		printf("am_i_dead = %d\n", *philo->am_i_dead);
+		printf("am_i_dead = %d\n", philo->am_i_dead);
 		printf("sated = %d\n", *philo->sated);
 		printf("start_time = %ld\n", *philo->start_time);
 		printf("his fork = %d\n", philo->his_fork.idx);
@@ -102,4 +102,5 @@ void	ft_init_waiter(t_waiter *waiter, int argc, char **argv)
 		printf("all_alive = %d\n", waiter->all_alive);	
 		printf("sated = %d\n", waiter->sated);	
 	}
+	ft_get_waiter(waiter);
 }

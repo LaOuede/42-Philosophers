@@ -3,14 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/18 15:27:34 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:36:10 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
+
+void	*ft_get_waiter(void *ptr)
+{
+	static void	*waiter = NULL;
+
+	if (ptr)
+		waiter = ptr;
+	return (waiter);
+}
 
 void	*ft_calloc(size_t count, size_t size)
 {
