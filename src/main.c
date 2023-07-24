@@ -3,42 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/23 17:40:32 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/24 12:36:41 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-// TODO : pb with join because nightwatch detach before!
-bool	ft_join_threads(t_waiter *waiter, t_philo *philo)
+// TODO : pb with join
+bool	ft_kill_n_join(t_waiter *waiter, t_philo *philo, pthread_t *thread)
 {
 	int	i;
 
 	i = -1;
-	while (++i < waiter->param->nb_philo)
+	while (++i < waiter->nb_philo)
 	{
-		printf("Philo[%d]\n", i);
-		pthread_join(philo[i].thread, NULL);
-/* 		if (pthread_join(waiter->philo[i].thread, NULL))
-			return (false); */
+		pthread_mutex_destroy(&philo[i].his_fork.fork);
+		pthread_mutex_destroy(&philo[i].nbr_fork->fork);
+	}
+	i = -1;
+	while (++i < waiter->nb_philo)
+	{
+		printf("Philo[%d] - join threads\n", i);
+		if (pthread_join(thread[i], NULL))
+			return (false);
 	}
 	usleep(4000);
 	return (true);
 }
 
-bool	ft_create_threads(t_waiter *waiter)
+bool	ft_create_threads(t_waiter *waiter, t_philo *philo, pthread_t *thread)
 {
 	int	i;
 
 	i = -1;
 	pthread_mutex_lock(&waiter->start);
-	while (++i < waiter->param->nb_philo)
+	while (++i < waiter->nb_philo)
 	{
-		waiter->philo[i].last_meal = waiter->start_time;
-		if (pthread_create(&waiter->philo[i].thread, NULL, \
+		philo[i].last_meal = waiter->start_time;
+		if (pthread_create(&thread[i], NULL, \
 			&ft_routine_philos, &waiter->philo[i]))
 			return (false);
 	}
@@ -47,37 +52,38 @@ bool	ft_create_threads(t_waiter *waiter)
 	return (true);
 }
 
-int	ft_diner(t_waiter *waiter)
+int	ft_diner(t_waiter *waiter, t_philo *philo)
 {
-	if (waiter->param->nb_philo == 1)
+	pthread_t	philo_thread[200];
+
+	if (waiter->nb_philo == 1)
 	{
-		ft_the_one_and_only(waiter);
+		ft_the_one_and_only(waiter, philo_thread);
 		return (0);
 	}
 	else
 	{
-		ft_init_forks(waiter, waiter->philo);
-		if (ft_create_threads(waiter) == true)
-			while (ft_death_watchtower(waiter) == true)
-				continue ;
+		ft_init_forks(waiter, philo);
+		if (ft_create_threads(waiter, philo, philo_thread) == false)
+			return (1);
+		if (ft_kill_n_join(waiter, philo, philo_thread) == true)
+			return (0);
 	}
-/* 	if (ft_join_threads(waiter, waiter->philo) == true)
-		return (0); */
 	usleep(5000);
 	return (1);
 }
 
 int	main(int argc, char **argv)
 {
-	t_waiter	*waiter;
+	t_waiter	waiter;
+	t_philo		philo[200];
 
-	waiter = ft_init_waiter();
 	if ((argc == 5 || argc == 6) && ft_parsing(argc, argv) == true)
 	{
-		waiter->param = ft_init_param(argc, argv);
-		waiter->philo = ft_init_philo(waiter);
-		ft_diner(waiter);
-		ft_clean_n_quit(waiter);
+		ft_init_waiter(&waiter, argc, argv);
+		ft_init_philo(&waiter, philo);
+		ft_diner(&waiter, philo);
+		ft_clean_n_quit(&waiter);
 	}
 	else
 		ft_putstr_fd(ERR_ARGS, STDERR_FILENO);
