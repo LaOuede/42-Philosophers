@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_eat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 12:24:18 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/24 15:21:10 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 // TODO : add a condition (if TTE > TTD or TTS > TTD) ?
 // Don't think monitoring is needed if TTE < TTD
-bool	ft_eat_monitoring(t_waiter *waiter, t_philo *philo, time_t limit, int idx)
+/* bool	ft_eat_monitoring(t_waiter *waiter, t_philo *philo, time_t limit, int idx)
 {
 	time_t	time_now;
 	time_t	start_action;
@@ -25,10 +25,10 @@ bool	ft_eat_monitoring(t_waiter *waiter, t_philo *philo, time_t limit, int idx)
 	(void)idx;
 	time_now = ft_timestamp_in_ms(waiter);
 	start_action = ft_timestamp_in_ms(waiter);
-/* 	printf("who's here = %d\n", idx);
+	printf("who's here = %d\n", idx);
 	printf("time_now = %ld\n", time_now);
 	printf("start_action = %ld\n", start_action);
-	printf("limit = %ld\n", limit); */
+	printf("limit = %ld\n", limit);
 	while (time_now - philo[idx].last_meal <= limit)
 	{
 		//printf("time_now = %ld\n", time_now);
@@ -78,4 +78,4 @@ bool	ft_check_meals(t_waiter *waiter, t_philo *philo, int idx)
 			return (false);
 	}
 	return (true);
-}
+} */

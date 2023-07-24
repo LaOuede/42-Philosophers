@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_time.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/19 14:21:54 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/24 15:24:18 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ time_t	ft_get_time(void)
 	return (time_now);
 }
 
-time_t	ft_timestamp_in_ms(t_waiter *waiter)
+time_t	ft_timestamp_in_ms(t_philo *philo)
 {
 	time_t		time;
 	time_t		time_now;
 
 	time_now = ft_get_time();
-	time = time_now - waiter->start_time;
+	time = time_now - philo->start_time;
 	if (DEBUG)
 	{
 		printf(KYEL "---------- "KGRN"UTILS_TIME"KYEL" ----------\n" RT);
-		printf("start_time = %ld\n", waiter->start_time);
+		printf("start_time = %ld\n", philo->start_time);
 		printf("time_now = %ld\n", time_now);
 		printf("dif_time = %ld ms\n", time);
 	}

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils_death.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 12:12:23 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/24 15:20:57 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-int	ft_night_watch(t_waiter *waiter)
+/* int	ft_night_watch(t_waiter *waiter)
 {
 	while (42)
 	{
@@ -49,7 +49,7 @@ bool	ft_still_standing(t_waiter *waiter, t_philo *philo, int idx)
 		return (false);
 	}
 	return (true);
-}
+} */
 
 /* bool	ft_night_watch(t_waiter *waiter, int idx)
 {

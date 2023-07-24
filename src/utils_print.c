@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 12:36:03 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/24 15:39:04 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_putstr_fd(char *str, int fd)
 		write(fd, &str[i], 1);
 }
 
-int	ft_print_msg(t_waiter *waiter, t_philo *philo, int idx, char *msg)
+/* int	ft_print_msg(t_waiter *waiter, t_philo *philo, int idx, char *msg)
 {
 	time_t	timestamp;
 
@@ -39,16 +39,4 @@ int	ft_print_msg(t_waiter *waiter, t_philo *philo, int idx, char *msg)
 	printf("%ld %d %s\n", timestamp, idx + 1, DIED);
 	pthread_mutex_unlock(&waiter->print);
 	return (1);
-}
-
-int	ft_print_msg_alone(t_waiter *waiter, int idx, char *msg)
-{
-	time_t	timestamp;
-
-	printf("SEGFAULT 2\n");
-	pthread_mutex_lock(&waiter->print);
-	timestamp = ft_timestamp_in_ms(waiter);
-	printf("%ld %d %s\n", timestamp, idx + 1, msg);
-	pthread_mutex_unlock(&waiter->print);
-	return (0);
-}
+} */

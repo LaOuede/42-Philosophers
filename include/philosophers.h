@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 12:29:29 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/24 15:41:13 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,25 @@ typedef struct s_fork
 typedef struct s_philo
 {
 	int					idx;
-	bool				eating;
+	int					nb_philo;
+	time_t				ms_die;
+	time_t				ms_eat;
+	time_t				ms_sleep;
+	int					nb_meals;
+	bool				*am_i_dead;
+	int					*sated;
+	time_t				start_time;
 	t_fork				his_fork;
 	t_fork				*nbr_fork;
+	bool				eating;
 	bool				thinking;
 	bool				sleeping;
-	bool				dead;
 	int					meals;
 	time_t				last_meal;
-	time_t				will_be_dead;
-	struct s_waiter		*waiter;
+	pthread_mutex_t		*start;
+	pthread_mutex_t		*eat;
+	pthread_mutex_t		*dead;
+	pthread_mutex_t		*print;
 }t_philo;
 
 typedef struct s_waiter
@@ -87,8 +96,7 @@ typedef struct s_waiter
 	pthread_mutex_t	dead;
 	pthread_mutex_t	print;
 	bool			all_alive;
-	bool			sated;
-
+	int				sated;
 }t_waiter;
 
 /* ---------------- INITIALIZATION ---------------- */
@@ -104,16 +112,16 @@ bool		ft_nb_philo_check(char *str);
 bool		ft_parsing(int argc, char **argv);
 
 /* ------------------- ROUTINE -------------------- */
-int			ft_diner(t_waiter *waiter, t_philo *philo);
-bool		ft_eat(t_waiter *waiter, t_philo *philo, int idx);
+int			ft_diner(t_philo *philo);
+bool		ft_eat(t_philo *philo, int idx);
 bool		ft_eat_monitoring(t_waiter *waiter, t_philo *philo, time_t limit, int idx);
 bool		ft_kill_n_join(t_waiter *waiter, t_philo *philo, pthread_t *thread);
 void		*ft_routine_philos(void *arg);
 void		*ft_routine_philo_alone(void *arg);
-bool		ft_sleep(t_waiter *waiter, t_philo *philo, int idx);
-int			ft_the_one_and_only(t_waiter *waiter, pthread_t *thread);
-bool		ft_take_forks(t_waiter *waiter, t_philo *philo, int idx);
-bool		ft_think(t_waiter *waiter, t_philo *philo, int idx);
+bool		ft_sleep(t_philo *philo, int idx);
+int			ft_the_one_and_only(t_philo *philo, pthread_t *thread);
+bool		ft_take_forks(t_philo *philo, int idx);
+bool		ft_think(t_philo *philo, int idx);
 
 /* -------------------- UTILS --------------------- */
 int			ft_atoi(const char *str);
@@ -129,13 +137,13 @@ bool		ft_all_sated(t_waiter *waiter, t_philo *philo);
 bool		ft_check_meals(t_waiter *waiter, t_philo *philo, int idx);
 
 /* ------------------UTILS PRINT------------------- */
-int			ft_print_msg(t_waiter *waiter, t_philo *philo, int idx, char *msg);
-int			ft_print_msg_alone(t_waiter *waiter, int idx, char *msg);
+int			ft_print_msg(t_philo *philo, int idx, char *msg);
+int			ft_print_msg_alone(t_philo *philo, int idx, char *msg);
 void		ft_putstr_fd(char *s, int fd);
 
 /* ------------------ UTILS TIME ------------------ */
 time_t		ft_get_time(void);
-time_t		ft_timestamp_in_ms(t_waiter *waiter);
+time_t		ft_timestamp_in_ms(t_philo *philo);
 void		ft_usleep(time_t time);
 
 /* ------------------- CLEANING ------------------- */
