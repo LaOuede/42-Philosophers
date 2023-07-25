@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 11:52:32 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/25 12:20:21 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ int	ft_print_msg(t_philo *philo, char *msg)
 	pthread_mutex_lock(philo->mutex_print);
 	if (waiter->all_alive == true)
 	{
-		if (philo->am_i_dead == false)
+		if (philo->am_i_dead == true)
 		{
+			waiter->all_alive = false;
 			timestamp = ft_timestamp_in_ms(philo);
-			printf("%ld %d %s\n", timestamp, philo->idx + 1, msg);
+			printf("%ld %d %s\n", timestamp, philo->idx + 1, DIED);
 			pthread_mutex_unlock(philo->mutex_print);
-			return (0);
+			return (1);
 		}
-		waiter->all_alive = false;
 		timestamp = ft_timestamp_in_ms(philo);
-		printf("%ld %d %s\n", timestamp, philo->idx + 1, DIED);
+		printf("%ld %d %s\n", timestamp, philo->idx + 1, msg);
 		pthread_mutex_unlock(philo->mutex_print);
-		return (1);
+		return (0);
 	}
 	pthread_mutex_unlock(philo->mutex_print);
 	return (1);
