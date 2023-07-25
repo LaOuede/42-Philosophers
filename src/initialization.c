@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 20:30:50 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 09:37:40 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@ void	ft_init_forks(t_philo *philo)
 		if (i == philo->nb_philo - 1)
 			philo[i].nbr_fork = &philo[0].his_fork;
 		pthread_mutex_init(&philo[i].his_fork.fork, NULL);
+	}
+	if (DEBUG)
+	{
+		printf("philo[%d] his fork = %d\n", i, philo[i].his_fork.idx);
+		printf("philo[%d] his fork = %p\n", i, &philo[i].his_fork.idx);
+		printf("philo[%d] nbr fork = %d\n", i, philo[i].nbr_fork->idx);
+		printf("philo[%d] nbr fork = %p\n", i, &philo[i].nbr_fork->idx);
+		printf("------------------------\n");
 	}
 }
 
@@ -51,10 +59,13 @@ void	ft_init_philo(t_waiter *waiter, t_philo *philo)
 		philo[idx].sleeping = false;
 		philo[idx].meals = 0;
 		philo[idx].last_meal = 0;
+		philo[idx].time_to_eat = 0;
+		philo[idx].time_to_sleep = 0;
 		philo[idx].mutex_start = &waiter->start;
 		philo[idx].mutex_eat = &waiter->eat;
 		philo[idx].mutex_dead = &waiter->dead;
 		philo[idx].mutex_print = &waiter->print;
+		philo[idx].mutex_forks_lock = &waiter->forks_lock;
 	}
 	if (DEBUG)
 	{
@@ -89,6 +100,7 @@ void	ft_init_waiter(t_waiter *waiter, int argc, char **argv)
 	pthread_mutex_init(&waiter->eat, NULL);
 	pthread_mutex_init(&waiter->dead, NULL);
 	pthread_mutex_init(&waiter->print, NULL);
+	pthread_mutex_init(&waiter->forks_lock, NULL);
 	waiter->all_alive = true;
 	waiter->sated = false;
 	if (DEBUG)
@@ -98,9 +110,9 @@ void	ft_init_waiter(t_waiter *waiter, int argc, char **argv)
 		printf("ms_die = %ld\n", waiter->ms_die);
 		printf("ms_eat = %ld\n", waiter->ms_eat);
 		printf("ms_sleep = %ld\n", waiter->ms_sleep);
-		printf("nb_meals = %d\n", waiter->nb_meals);	
-		printf("all_alive = %d\n", waiter->all_alive);	
-		printf("sated = %d\n", waiter->sated);	
+		printf("nb_meals = %d\n", waiter->nb_meals);
+		printf("all_alive = %d\n", waiter->all_alive);
+		printf("sated = %d\n", waiter->sated);
 	}
 	ft_get_waiter(waiter);
 }
