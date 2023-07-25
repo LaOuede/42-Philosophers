@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 19:31:35 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/24 20:30:50 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	ft_init_forks(t_philo *philo)
 	i = -1;
 	while (++i < philo->nb_philo)
 	{
-		pthread_mutex_init(&philo[i].his_fork.fork, NULL);
+/* 		pthread_mutex_init(philo[i].his_fork.fork, NULL); */
 		if (i < philo->nb_philo)
 			philo[i].nbr_fork = &philo[i + 1].his_fork;
 		if (i == philo->nb_philo - 1)
 			philo[i].nbr_fork = &philo[0].his_fork;
-		pthread_mutex_init(&philo[i].nbr_fork->fork, NULL);
+		pthread_mutex_init(&philo[i].his_fork.fork, NULL);
 	}
 }
 

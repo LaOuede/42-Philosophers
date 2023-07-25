@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 19:44:39 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/24 21:04:07 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	ft_think(t_philo *philo)
 {
 	if (ft_print_msg(philo, THINK) == 1)
 		return (false);
-	usleep(250);
+	usleep(500);
 	return (true);
 }
 
@@ -32,6 +32,8 @@ bool	ft_sleep(t_philo *philo)
 
 bool	ft_eat(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->his_fork.fork);
+	pthread_mutex_lock(&philo->nbr_fork->fork);
 	if (ft_print_msg(philo, EAT))
 		return (false);
 	if (ft_monitoring(philo, philo->ms_eat) == true)
@@ -47,28 +49,27 @@ bool	ft_eat(t_philo *philo)
 
 bool	ft_take_forks(t_philo *philo)
 {
-	time_t	time_now;
-
-	time_now = ft_timestamp_in_ms(philo);
 	while (42)
 	{
-		if (time_now > philo->ms_die)
-			return (false);
 		pthread_mutex_lock(&philo->his_fork.fork);
 		pthread_mutex_lock(&philo->nbr_fork->fork);
-		if (philo->his_fork.idx == -1 \
-			&& philo->nbr_fork->idx == -1)
+/* 		if (ft_timestamp_in_ms(philo) > philo->ms_die)
+			return (false); */
+		if (philo->his_fork.idx == -1 && philo->nbr_fork->idx == -1)
 		{
-			if (ft_print_msg(philo, FORK) == 1)
-				return (false);
 			philo->his_fork.idx = philo->idx;
 			if (ft_print_msg(philo, FORK) == 1)
 				return (false);
 			philo->nbr_fork->idx = philo->idx;
+			if (ft_print_msg(philo, FORK) == 1)
+				return (false);
+			pthread_mutex_unlock(&philo->his_fork.fork);
+			pthread_mutex_unlock(&philo->nbr_fork->fork);
 			return (true);
-		}
+			}
 		pthread_mutex_unlock(&philo->his_fork.fork);
 		pthread_mutex_unlock(&philo->nbr_fork->fork);
+		usleep(500);
 	}
 	return (false);
 }
@@ -84,7 +85,8 @@ void	*ft_routine_philos(void *arg)
 		printf("philo[%d] created\n", philo->idx);
 	if (!(philo->idx & 1))
 	{
-		ft_print_msg(philo, THINK);
+		if (ft_print_msg(philo, THINK) == 1)
+			return (false);
 		ft_usleep(philo->ms_eat / 2);
 	}
 	while (philo->nb_meals == -1 || philo->meals < philo->nb_meals)
@@ -99,6 +101,7 @@ void	*ft_routine_philos(void *arg)
 			break ;
 		if (ft_think(philo) == false)
 			break ;
+		usleep(500);
 	}
 	return (arg);
 }
