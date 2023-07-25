@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 14:27:09 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 15:30:25 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	ft_monitoring(t_philo *philo, time_t limit)
 			if (ft_print_msg(philo, DIED) == 1)
 				return (false);
 		}
-		usleep(100);
+		usleep(500);
 	}
 	return (true);
 }
@@ -40,7 +40,7 @@ bool	ft_think_n_fork_monitoring(t_philo *philo)
 			if (ft_print_msg(philo, DIED) == 1)
 				return (false);
 		}
-		usleep(100);
+		usleep(500);
 		time = ft_timestamp_in_ms(philo);
 	}
 	return (true);
