@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 15:06:31 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 16:30:07 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	ft_init_philo(t_waiter *waiter, t_philo *philo)
 		philo[idx].time_to_eat = 0;
 		philo[idx].time_to_sleep = 0;
 		philo[idx].mutex_start = &waiter->start;
-		philo[idx].mutex_eat = &waiter->eat;
 		philo[idx].mutex_print = &waiter->print;
 		philo[idx].mutex_forks_lock = &waiter->forks_lock;
 	}
@@ -90,7 +89,6 @@ void	ft_init_waiter(t_waiter *waiter, int argc, char **argv)
 		waiter->nb_meals = INT_MAX;
 	waiter->start_time = 0;
 	pthread_mutex_init(&waiter->start, NULL);
-	pthread_mutex_init(&waiter->eat, NULL);
 	pthread_mutex_init(&waiter->print, NULL);
 	pthread_mutex_init(&waiter->forks_lock, NULL);
 	waiter->all_alive = true;

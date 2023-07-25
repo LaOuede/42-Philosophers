@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 16:16:10 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 16:30:25 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_destroy_mutex(t_waiter *waiter)
 {
 	pthread_mutex_destroy(&waiter->start);
-	pthread_mutex_destroy(&waiter->eat);
 	pthread_mutex_destroy(&waiter->print);
 	pthread_mutex_destroy(&waiter->forks_lock);
 }
@@ -27,7 +26,6 @@ bool	ft_join_threads(t_philo *philo, pthread_t *thread)
 	i = -1;
 	while (++i < philo->nb_philo)
 	{
-		printf("thread [%d]\n", i);
 		if (pthread_join(thread[i], NULL))
 			return (false);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/21 12:22:35 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/25 16:40:42 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ bool	ft_args_check(int argc, char **argv)
 	i = 1;
 	while (++i < argc - 1)
 		if (ft_atoi(argv[i]) < 60)
+			return (false);
+	if (argc == 6)
+		if (ft_atoi(argv[i]) == 0)
 			return (false);
 	return (true);
 }

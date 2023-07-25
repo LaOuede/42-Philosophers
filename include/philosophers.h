@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 15:12:20 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 16:42:57 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ typedef struct s_philo
 	time_t				time_to_eat;
 	time_t				time_to_sleep;
 	pthread_mutex_t		*mutex_start;
-	pthread_mutex_t		*mutex_eat;
 	pthread_mutex_t		*mutex_print;
 	pthread_mutex_t		*mutex_forks_lock;
 }t_philo;
@@ -90,7 +89,6 @@ typedef struct s_waiter
 	int				*philo;
 	time_t			start_time;
 	pthread_mutex_t	start;
-	pthread_mutex_t	eat;
 	pthread_mutex_t	print;
 	pthread_mutex_t	forks_lock;
 	bool			all_alive;
@@ -111,6 +109,7 @@ bool		ft_nb_philo_check(char *str);
 bool		ft_parsing(int argc, char **argv);
 
 /* ------------------- ROUTINE -------------------- */
+void		ft_dispose_forks(t_philo *philo);
 int			ft_diner(t_waiter *waiter, t_philo *philo);
 bool		ft_eat(t_philo *philo);
 bool		ft_join_threads(t_philo *philo, pthread_t *thread);
@@ -129,7 +128,6 @@ void		*ft_calloc(size_t count, size_t size);
 void		ft_destroy_mutex(t_waiter *waiter);
 void		*ft_free_null(void *ptr);
 bool		ft_is_digit(char *str);
-/* bool		ft_night_watch(t_philo *philo); */
 
 /* ------------------UTILS PRINT------------------- */
 int			ft_print_msg(t_philo *philo, char *msg);

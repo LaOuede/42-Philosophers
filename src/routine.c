@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 16:20:35 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 16:45:21 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	*ft_routine_philos(void *arg)
 			break ;
 		usleep(500);
 	}
-	pthread_mutex_unlock(&philo->his_fork.fork);
-	pthread_mutex_unlock(&philo->nbr_fork->fork);
+	ft_dispose_forks(philo);
 	return (arg);
 }
