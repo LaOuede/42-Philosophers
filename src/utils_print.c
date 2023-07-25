@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 16:18:57 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 16:54:09 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,10 @@ int	ft_print_msg(t_philo *philo, char *msg)
 
 int	ft_print_msg_forks(t_philo *philo, char *msg)
 {
-	t_waiter	*waiter;
 	time_t		timestamp;
 
-	waiter = ft_get_waiter(NULL);
 	pthread_mutex_lock(philo->mutex_print);
-	if (waiter->all_alive == true)
+	if (philo->am_i_dead == false)
 	{
 		timestamp = ft_timestamp_in_ms(philo);
 		printf("%ld %d %s\n%ld %d %s\n", timestamp, philo->idx + 1, msg, \

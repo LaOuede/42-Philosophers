@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 16:30:07 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 16:52:06 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,6 @@ void	ft_init_forks(t_philo *philo)
 		if (i == philo->nb_philo - 1)
 			philo[i].nbr_fork = &philo[0].his_fork;
 		pthread_mutex_init(&philo[i].his_fork.fork, NULL);
-	}
-	if (DEBUG)
-	{
-		printf("philo[%d] his fork = %d\n", i, philo[i].his_fork.idx);
-		printf("philo[%d] his fork = %p\n", i, &philo[i].his_fork.idx);
-		printf("philo[%d] nbr fork = %d\n", i, philo[i].nbr_fork->idx);
-		printf("philo[%d] nbr fork = %p\n", i, &philo[i].nbr_fork->idx);
-		printf("------------------------\n");
 	}
 }
 
@@ -60,21 +52,6 @@ void	ft_init_philo(t_waiter *waiter, t_philo *philo)
 		philo[idx].mutex_print = &waiter->print;
 		philo[idx].mutex_forks_lock = &waiter->forks_lock;
 	}
-	if (DEBUG)
-	{
-		printf(KYEL "---------- "KGRN"INIT_PHILOS"KYEL" ----------\n" RT);
-		printf("idx = %d\n", philo->idx);
-		printf("nb_philo = %d\n", philo->nb_philo);
-		printf("ms_die = %ld\n", philo->ms_die);
-		printf("ms_eat = %ld\n", philo->ms_eat);
-		printf("ms_sleep = %ld\n", philo->ms_sleep);
-		printf("nb_meals = %d\n", philo->nb_meals);
-		printf("am_i_dead = %d\n", philo->am_i_dead);
-		printf("start_time = %ld\n", *philo->start_time);
-		printf("his fork = %d\n", philo->his_fork.idx);
-		printf("meals = %d\n", philo->meals);
-		printf("last_meal = %ld\n", philo->last_meal);
-	}
 }
 
 void	ft_init_waiter(t_waiter *waiter, int argc, char **argv)
@@ -92,15 +69,5 @@ void	ft_init_waiter(t_waiter *waiter, int argc, char **argv)
 	pthread_mutex_init(&waiter->print, NULL);
 	pthread_mutex_init(&waiter->forks_lock, NULL);
 	waiter->all_alive = true;
-	if (DEBUG)
-	{
-		printf(KYEL "---------- "KGRN"INIT_WAITER"KYEL" ----------\n" RT);
-		printf("nb_philo = %d\n", waiter->nb_philo);
-		printf("ms_die = %ld\n", waiter->ms_die);
-		printf("ms_eat = %ld\n", waiter->ms_eat);
-		printf("ms_sleep = %ld\n", waiter->ms_sleep);
-		printf("nb_meals = %d\n", waiter->nb_meals);
-		printf("all_alive = %d\n", waiter->all_alive);
-	}
 	ft_get_waiter(waiter);
 }
