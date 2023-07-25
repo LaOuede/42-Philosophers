@@ -6,13 +6,21 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 10:03:18 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:48:24 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-// TODO : pb with join
+void	ft_destroy_mutex(t_waiter *waiter)
+{
+	pthread_mutex_destroy(&waiter->start);
+	pthread_mutex_destroy(&waiter->eat);
+	pthread_mutex_destroy(&waiter->dead);
+	pthread_mutex_destroy(&waiter->print);
+	pthread_mutex_destroy(&waiter->forks_lock);
+}
+
 bool	ft_kill_n_join(t_philo *philo, pthread_t *thread)
 {
 	int	i;
@@ -26,8 +34,6 @@ bool	ft_kill_n_join(t_philo *philo, pthread_t *thread)
 	i = -1;
 	while (++i < philo->nb_philo)
 	{
-		if (DEBUG)
-			printf("Philo[%d] - join threads\n", i);
 		if (pthread_join(thread[i], NULL))
 			return (false);
 	}
@@ -84,7 +90,7 @@ int	main(int argc, char **argv)
 		ft_init_waiter(&waiter, argc, argv);
 		ft_init_philo(&waiter, philo);
 		ft_diner(&waiter, philo);
-		ft_clean_n_quit(&waiter);
+		ft_destroy_mutex(&waiter);
 	}
 	else
 		ft_putstr_fd(ERR_ARGS, STDERR_FILENO);

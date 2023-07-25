@@ -6,7 +6,7 @@
 #    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/07/25 10:20:32 by gle-roux         ###   ########.fr        #
+#    Updated: 2023/07/25 11:53:45 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,9 +56,9 @@ export HELP
 
 # Compiler and flags
 CC		=	gcc
-#CFLAGS	= 	-g -Wall -Wextra -Werror 
+CFLAGS	= 	-g -Wall -Wextra -Werror 
 #CFLAGS	= 	-fsanitize=address
-CFLAGS	=	-fsanitize=thread
+#CFLAGS	=	-g -Wall -Wextra -Werror -fsanitize=thread
 
 # Remove
 RM		=	rm -rf
@@ -68,15 +68,13 @@ NAME		=	philo
 
 # Dir. and files names
 SRCS_DIR	=	./src/
-SRCS_LIST	=	clean.c \
-				initialization.c \
+SRCS_LIST	=	initialization.c \
 				main.c \
 				parsing.c \
 				routine.c \
 				routine_alone.c \
 				utils.c \
-				utils_death.c \
-				utils_eat.c \
+				monitoring.c \
 				utils_print.c \
 				utils_time.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))

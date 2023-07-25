@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 09:37:40 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/25 11:34:57 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_init_forks(t_philo *philo)
 	i = -1;
 	while (++i < philo->nb_philo)
 	{
-/* 		pthread_mutex_init(philo[i].his_fork.fork, NULL); */
 		if (i < philo->nb_philo)
 			philo[i].nbr_fork = &philo[i + 1].his_fork;
 		if (i == philo->nb_philo - 1)
@@ -51,12 +50,8 @@ void	ft_init_philo(t_waiter *waiter, t_philo *philo)
 		philo[idx].ms_sleep = waiter->ms_sleep;
 		philo[idx].nb_meals = waiter->nb_meals;
 		philo[idx].am_i_dead = false;
-		philo[idx].sated = &waiter->sated;
 		philo[idx].start_time = &waiter->start_time;
 		philo[idx].his_fork.idx = -1;
-		philo[idx].eating = false;
-		philo[idx].thinking = false;
-		philo[idx].sleeping = false;
 		philo[idx].meals = 0;
 		philo[idx].last_meal = 0;
 		philo[idx].time_to_eat = 0;
@@ -77,7 +72,6 @@ void	ft_init_philo(t_waiter *waiter, t_philo *philo)
 		printf("ms_sleep = %ld\n", philo->ms_sleep);
 		printf("nb_meals = %d\n", philo->nb_meals);
 		printf("am_i_dead = %d\n", philo->am_i_dead);
-		printf("sated = %d\n", *philo->sated);
 		printf("start_time = %ld\n", *philo->start_time);
 		printf("his fork = %d\n", philo->his_fork.idx);
 		printf("meals = %d\n", philo->meals);
@@ -102,7 +96,6 @@ void	ft_init_waiter(t_waiter *waiter, int argc, char **argv)
 	pthread_mutex_init(&waiter->print, NULL);
 	pthread_mutex_init(&waiter->forks_lock, NULL);
 	waiter->all_alive = true;
-	waiter->sated = false;
 	if (DEBUG)
 	{
 		printf(KYEL "---------- "KGRN"INIT_WAITER"KYEL" ----------\n" RT);
@@ -112,7 +105,6 @@ void	ft_init_waiter(t_waiter *waiter, int argc, char **argv)
 		printf("ms_sleep = %ld\n", waiter->ms_sleep);
 		printf("nb_meals = %d\n", waiter->nb_meals);
 		printf("all_alive = %d\n", waiter->all_alive);
-		printf("sated = %d\n", waiter->sated);
 	}
 	ft_get_waiter(waiter);
 }
