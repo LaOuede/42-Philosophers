@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 11:48:24 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/25 15:06:16 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,14 @@ void	ft_destroy_mutex(t_waiter *waiter)
 {
 	pthread_mutex_destroy(&waiter->start);
 	pthread_mutex_destroy(&waiter->eat);
-	pthread_mutex_destroy(&waiter->dead);
 	pthread_mutex_destroy(&waiter->print);
 	pthread_mutex_destroy(&waiter->forks_lock);
 }
 
-bool	ft_kill_n_join(t_philo *philo, pthread_t *thread)
+bool	ft_join_threads(t_philo *philo, pthread_t *thread)
 {
 	int	i;
 
-	i = -1;
-	while (++i < philo->nb_philo)
-	{
-		pthread_mutex_destroy(&philo[i].his_fork.fork);
-		pthread_mutex_destroy(&philo[i].nbr_fork->fork);
-	}
 	i = -1;
 	while (++i < philo->nb_philo)
 	{
@@ -74,10 +67,10 @@ int	ft_diner(t_waiter *waiter, t_philo *philo)
 		ft_init_forks(philo);
 		if (ft_create_threads(waiter, philo, philo_thread) == false)
 			return (1);
-		if (ft_kill_n_join(philo, philo_thread) == true)
+		if (ft_join_threads(philo, philo_thread) == true)
 			return (0);
 	}
-	return (1);
+	return (0);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/24 16:22:56 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 15:07:25 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,3 +52,24 @@ void	ft_usleep(time_t time_sleep)
 		usleep(50);
 	}
 }
+
+/* bool	ft_night_watch(t_philo *philo)
+{
+	t_waiter	*waiter;
+
+	waiter = ft_get_waiter(NULL);
+	while (42)
+	{
+		pthread_mutex_lock(philo->mutex_dead);
+		if (waiter->all_alive == true)
+		{
+			usleep(500);
+			pthread_mutex_unlock(philo->mutex_dead);
+			return (true);
+		}
+		else
+			break ;
+	}
+	pthread_mutex_unlock(philo->mutex_dead);
+	return (false);
+} */

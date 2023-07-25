@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 11:49:39 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/25 15:06:40 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ typedef struct s_philo
 	time_t				time_to_sleep;
 	pthread_mutex_t		*mutex_start;
 	pthread_mutex_t		*mutex_eat;
-	pthread_mutex_t		*mutex_dead;
 	pthread_mutex_t		*mutex_print;
 	pthread_mutex_t		*mutex_forks_lock;
 }t_philo;
@@ -92,7 +91,6 @@ typedef struct s_waiter
 	time_t			start_time;
 	pthread_mutex_t	start;
 	pthread_mutex_t	eat;
-	pthread_mutex_t	dead;
 	pthread_mutex_t	print;
 	pthread_mutex_t	forks_lock;
 	bool			all_alive;
@@ -115,7 +113,7 @@ bool		ft_parsing(int argc, char **argv);
 /* ------------------- ROUTINE -------------------- */
 int			ft_diner(t_waiter *waiter, t_philo *philo);
 bool		ft_eat(t_philo *philo);
-bool		ft_kill_n_join(t_philo *philo, pthread_t *thread);
+bool		ft_join_threads(t_philo *philo, pthread_t *thread);
 bool		ft_monitoring(t_philo *philo, time_t limit);
 void		*ft_routine_philos(void *arg);
 void		*ft_routine_philo_alone(void *arg);
@@ -131,10 +129,10 @@ void		*ft_calloc(size_t count, size_t size);
 void		ft_destroy_mutex(t_waiter *waiter);
 void		*ft_free_null(void *ptr);
 bool		ft_is_digit(char *str);
+bool		ft_night_watch(t_philo *philo);
 
 /* ------------------UTILS PRINT------------------- */
 int			ft_print_msg(t_philo *philo, char *msg);
-int			ft_print_msg_forks(t_philo *philo, char *msg);
 void		ft_putstr_fd(char *s, int fd);
 
 /* ------------------ UTILS TIME ------------------ */
