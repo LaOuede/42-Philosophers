@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 15:02:42 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 15:11:39 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ bool	ft_take_forks(t_philo *philo)
 		pthread_mutex_lock(&philo->nbr_fork->fork);
 		philo->his_fork.idx = philo->idx;
 		philo->nbr_fork->idx = philo->idx;
-		if (ft_print_msg(philo, FORK) == 1)
-			return (false);
-		if (ft_print_msg(philo, FORK) == 1)
+		if (ft_print_msg_forks(philo, FORK) == 1)
 			return (false);
 		pthread_mutex_unlock(philo->mutex_forks_lock);
 		return (true);

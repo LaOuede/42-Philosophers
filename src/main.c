@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 15:06:16 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 15:14:26 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ bool	ft_join_threads(t_philo *philo, pthread_t *thread)
 		if (pthread_join(thread[i], NULL))
 			return (false);
 	}
-	usleep(4000);
 	return (true);
 }
 

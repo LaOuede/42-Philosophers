@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 15:06:40 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 15:12:20 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,10 +129,11 @@ void		*ft_calloc(size_t count, size_t size);
 void		ft_destroy_mutex(t_waiter *waiter);
 void		*ft_free_null(void *ptr);
 bool		ft_is_digit(char *str);
-bool		ft_night_watch(t_philo *philo);
+/* bool		ft_night_watch(t_philo *philo); */
 
 /* ------------------UTILS PRINT------------------- */
 int			ft_print_msg(t_philo *philo, char *msg);
+int			ft_print_msg_forks(t_philo *philo, char *msg);
 void		ft_putstr_fd(char *s, int fd);
 
 /* ------------------ UTILS TIME ------------------ */
