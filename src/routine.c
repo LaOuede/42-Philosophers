@@ -6,7 +6,7 @@
 /*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 16:00:44 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/25 16:20:35 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ bool	ft_think(t_philo *philo)
 {
 	if (ft_print_msg(philo, THINK) == 1)
 		return (false);
-	ft_think_n_fork_monitoring(philo);
+	if (ft_think_n_fork_monitoring(philo) == false)
+	 	return (false);
 	return (true);
 }
 
@@ -43,7 +44,8 @@ bool	ft_sleep(t_philo *philo)
 	if (ft_print_msg(philo, SLEEP) == 1)
 		return (false);
 	philo->time_to_sleep = ft_timestamp_in_ms(philo) + philo->ms_sleep;
-	ft_monitoring(philo, philo->time_to_sleep);
+	if (ft_monitoring(philo, philo->time_to_sleep) == false)
+		return (false);
 	return (true);
 }
 
@@ -79,10 +81,12 @@ void	*ft_routine_philos(void *arg)
 		ft_usleep(philo->ms_eat / 2);
 	while (philo->meals < philo->nb_meals)
 	{
-		if (ft_think(philo) == true)
-			if (ft_eat(philo) == true)
-				if (ft_sleep(philo) == false)
-					break ;
+		if (ft_think(philo) == false)
+			break ;
+		if (ft_eat(philo) == false)
+			break ;
+		if (ft_sleep(philo) == false)
+			break ;
 		usleep(500);
 	}
 	pthread_mutex_unlock(&philo->his_fork.fork);
