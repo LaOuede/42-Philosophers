@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 11:53:23 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/25 13:33:20 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void	*ft_routine_philos(void *arg)
 					break ;
 		usleep(500);
 	}
+	
 	return (arg);
 }
