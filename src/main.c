@@ -6,34 +6,13 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/26 09:19:44 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:23:40 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-void	ft_destroy_mutex(t_waiter *waiter, t_philo *philo)
-{
-	pthread_mutex_destroy(&waiter->start);
-	pthread_mutex_destroy(&waiter->print);
-	pthread_mutex_destroy(&waiter->forks_lock);
-	pthread_mutex_destroy(&philo->his_fork.fork);
-}
-
-bool	ft_join_threads(t_philo *philo, pthread_t *thread)
-{
-	int	i;
-
-	i = -1;
-	while (++i < philo->nb_philo)
-	{
-		if (pthread_join(thread[i], NULL))
-			return (false);
-	}
-	return (true);
-}
-
-bool	ft_create_threads(t_waiter *waiter, t_philo *philo, pthread_t *thread)
+int	ft_create_threads(t_waiter *waiter, t_philo *philo, pthread_t *thread)
 {
 	int	i;
 
@@ -44,15 +23,16 @@ bool	ft_create_threads(t_waiter *waiter, t_philo *philo, pthread_t *thread)
 		philo[i].last_meal = *philo->start_time;
 		if (pthread_create(&thread[i], NULL, \
 			&ft_routine_philos, &philo[i]))
-			return (false);
+			return (i);
 	}
 	waiter->start_time = ft_get_time();
 	pthread_mutex_unlock(philo->mutex_start);
-	return (true);
+	return (-1);
 }
 
 int	ft_diner(t_waiter *waiter, t_philo *philo)
 {
+	int			res;
 	pthread_t	philo_thread[200];
 
 	if (philo->nb_philo == 1)
@@ -64,9 +44,9 @@ int	ft_diner(t_waiter *waiter, t_philo *philo)
 	else
 	{
 		ft_init_forks(philo);
-		if (ft_create_threads(waiter, philo, philo_thread) == false)
-			if (ft_join_threads(philo, philo_thread) == true)
-				return (1);
+		res = ft_create_threads(waiter, philo, philo_thread);
+		if (res >= 0)
+			(ft_kill_threads(philo_thread, res));
 		if (ft_join_threads(philo, philo_thread) == true)
 			return (0);
 	}

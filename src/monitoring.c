@@ -5,22 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/26 09:00:43 by gle-roux         ###   ########.fr       */
+/*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
+/*   Updated: 2023/07/26 11:26:40 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
-
-void	ft_dispose_forks(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->his_fork.fork);
-	pthread_mutex_lock(&philo->nbr_fork->fork);
-	philo->his_fork.idx = -1;
-	philo->nbr_fork->idx = -1;
-	pthread_mutex_unlock(&philo->his_fork.fork);
-	pthread_mutex_unlock(&philo->nbr_fork->fork);
-}
 
 bool	ft_monitoring(t_philo *philo, time_t limit)
 {

@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/26 09:52:46 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:09:26 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	ft_print_msg_forks(t_philo *philo, char *msg)
 	time_t		timestamp;
 
 	waiter = ft_get_waiter(NULL);
-
 	pthread_mutex_lock(philo->mutex_print);
 	if (waiter->all_alive == true)
 	{

@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 10:10:07 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/26 09:39:34 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:15:16 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void		ft_init_philo(t_waiter *waiter, t_philo *philo);
 void		ft_init_waiter(t_waiter *waiter, int argc, char **argv);
 
 /* ------------------- ROUTINE -------------------- */
-bool		ft_create_threads(t_waiter *waiter, \
+int			ft_create_threads(t_waiter *waiter, \
 t_philo *philo, pthread_t *thread);
 void		ft_destroy_mutex(t_waiter *waiter, t_philo *philo);
 void		ft_dispose_forks(t_philo *philo);
