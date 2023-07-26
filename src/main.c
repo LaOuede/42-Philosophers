@@ -6,11 +6,34 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/26 11:23:40 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:28:04 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
+
+bool	ft_kill_threads(pthread_t *thread, int i)
+{
+	while (i-- >= 0)
+	{
+		if (pthread_join(thread[i], NULL))
+			return (false);
+	}
+	return (true);
+}
+
+bool	ft_join_threads(t_philo *philo, pthread_t *thread)
+{
+	int	i;
+
+	i = -1;
+	while (++i < philo->nb_philo)
+	{
+		if (pthread_join(thread[i], NULL))
+			return (false);
+	}
+	return (true);
+}
 
 int	ft_create_threads(t_waiter *waiter, t_philo *philo, pthread_t *thread)
 {
