@@ -6,7 +6,7 @@
 /*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/26 11:09:26 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/26 15:03:48 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_print_msg_forks(t_philo *philo, char *msg)
 		{
 			timestamp = ft_timestamp_in_ms(philo);
 			printf("%ld %d %s\n%ld %d %s\n", timestamp, philo->idx + 1, msg, \
-			timestamp, philo->idx + 1, msg);
+				timestamp, philo->idx + 1, msg);
 			pthread_mutex_unlock(philo->mutex_print);
 			return (0);
 		}
