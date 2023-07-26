@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 16:54:09 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/26 09:52:46 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,22 @@ int	ft_print_msg(t_philo *philo, char *msg)
 
 int	ft_print_msg_forks(t_philo *philo, char *msg)
 {
+	t_waiter	*waiter;
 	time_t		timestamp;
 
+	waiter = ft_get_waiter(NULL);
+
 	pthread_mutex_lock(philo->mutex_print);
-	if (philo->am_i_dead == false)
+	if (waiter->all_alive == true)
 	{
-		timestamp = ft_timestamp_in_ms(philo);
-		printf("%ld %d %s\n%ld %d %s\n", timestamp, philo->idx + 1, msg, \
-		timestamp, philo->idx + 1, msg);
-		pthread_mutex_unlock(philo->mutex_print);
-		return (0);
+		if (philo->am_i_dead == false)
+		{
+			timestamp = ft_timestamp_in_ms(philo);
+			printf("%ld %d %s\n%ld %d %s\n", timestamp, philo->idx + 1, msg, \
+			timestamp, philo->idx + 1, msg);
+			pthread_mutex_unlock(philo->mutex_print);
+			return (0);
+		}
 	}
 	pthread_mutex_unlock(philo->mutex_print);
 	return (1);

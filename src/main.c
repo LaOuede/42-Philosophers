@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 16:30:25 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/26 09:19:44 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philosophers.h"
 
-void	ft_destroy_mutex(t_waiter *waiter)
+void	ft_destroy_mutex(t_waiter *waiter, t_philo *philo)
 {
 	pthread_mutex_destroy(&waiter->start);
 	pthread_mutex_destroy(&waiter->print);
 	pthread_mutex_destroy(&waiter->forks_lock);
+	pthread_mutex_destroy(&philo->his_fork.fork);
 }
 
 bool	ft_join_threads(t_philo *philo, pthread_t *thread)
@@ -64,7 +65,8 @@ int	ft_diner(t_waiter *waiter, t_philo *philo)
 	{
 		ft_init_forks(philo);
 		if (ft_create_threads(waiter, philo, philo_thread) == false)
-			return (1);
+			if (ft_join_threads(philo, philo_thread) == true)
+				return (1);
 		if (ft_join_threads(philo, philo_thread) == true)
 			return (0);
 	}
@@ -81,7 +83,7 @@ int	main(int argc, char **argv)
 		ft_init_waiter(&waiter, argc, argv);
 		ft_init_philo(&waiter, philo);
 		ft_diner(&waiter, philo);
-		ft_destroy_mutex(&waiter);
+		ft_destroy_mutex(&waiter, philo);
 	}
 	else
 		ft_putstr_fd(ERR_ARGS, STDERR_FILENO);

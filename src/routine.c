@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 17:01:38 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/26 10:05:56 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,35 +28,33 @@ bool	ft_eat(t_philo *philo)
 		return (false);
 	philo->time_to_eat = ft_timestamp_in_ms(philo) + philo->ms_eat;
 	philo->last_meal = ft_timestamp_in_ms(philo) + philo->ms_die;
-	if (ft_monitoring(philo, philo->time_to_eat))
+	if (ft_monitoring(philo, philo->time_to_eat) == true)
 	{
-		pthread_mutex_unlock(&philo->his_fork.fork);
-		pthread_mutex_unlock(&philo->nbr_fork->fork);
-		pthread_mutex_lock(philo->mutex_forks_lock);
-		philo->his_fork.idx = -1;
-		philo->nbr_fork->idx = -1;
-		pthread_mutex_unlock(philo->mutex_forks_lock);
+		ft_dispose_forks(philo);
 		philo->meals += 1;
 		return (true);
 	}
+	else
+		ft_dispose_forks(philo);
 	return (false);
 }
 
 bool	ft_take_forks(t_philo *philo)
 {
-	pthread_mutex_lock(philo->mutex_forks_lock);
+	pthread_mutex_lock(&philo->his_fork.fork);
+	pthread_mutex_lock(&philo->nbr_fork->fork);
 	if (philo->his_fork.idx == -1 && philo->nbr_fork->idx == -1)
 	{
-		pthread_mutex_lock(&philo->his_fork.fork);
-		pthread_mutex_lock(&philo->nbr_fork->fork);
 		philo->his_fork.idx = philo->idx;
 		philo->nbr_fork->idx = philo->idx;
+		pthread_mutex_unlock(&philo->his_fork.fork);
+		pthread_mutex_unlock(&philo->nbr_fork->fork);
 		if (ft_print_msg_forks(philo, FORK) == 1)
 			return (false);
-		pthread_mutex_unlock(philo->mutex_forks_lock);
 		return (true);
 	}
-	pthread_mutex_unlock(philo->mutex_forks_lock);
+	pthread_mutex_unlock(&philo->his_fork.fork);
+	pthread_mutex_unlock(&philo->nbr_fork->fork);
 	return (false);
 }
 
@@ -85,10 +83,11 @@ void	*ft_routine_philos(void *arg)
 			break ;
 		if (ft_eat(philo) == false)
 			break ;
+		if (philo->meals == philo->nb_meals)
+			break ;
 		if (ft_sleep(philo) == false)
 			break ;
 		usleep(500);
 	}
-	ft_dispose_forks(philo);
 	return (arg);
 }

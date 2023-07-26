@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 16:47:13 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/26 09:00:43 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	ft_dispose_forks(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->his_fork.fork);
+	pthread_mutex_lock(&philo->nbr_fork->fork);
+	philo->his_fork.idx = -1;
+	philo->nbr_fork->idx = -1;
 	pthread_mutex_unlock(&philo->his_fork.fork);
 	pthread_mutex_unlock(&philo->nbr_fork->fork);
 }

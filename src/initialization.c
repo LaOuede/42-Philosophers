@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
+/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/25 16:58:11 by gwenolalero      ###   ########.fr       */
+/*   Updated: 2023/07/26 09:35:05 by gle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,18 @@ void	ft_init_philo(t_waiter *waiter, t_philo *philo)
 	while (++idx < waiter->nb_philo)
 	{
 		philo[idx].idx = idx;
-		philo[idx].nb_philo = waiter->nb_philo;
-		philo[idx].ms_die = waiter->ms_die;
-		philo[idx].ms_eat = waiter->ms_eat;
-		philo[idx].ms_sleep = waiter->ms_sleep;
-		philo[idx].nb_meals = waiter->nb_meals;
 		philo[idx].am_i_dead = false;
-		philo[idx].start_time = &waiter->start_time;
 		philo[idx].his_fork.idx = -1;
 		philo[idx].meals = 0;
 		philo[idx].last_meal = 0;
 		philo[idx].time_to_eat = 0;
 		philo[idx].time_to_sleep = 0;
+		philo[idx].nb_philo = waiter->nb_philo;
+		philo[idx].ms_die = waiter->ms_die;
+		philo[idx].ms_eat = waiter->ms_eat;
+		philo[idx].ms_sleep = waiter->ms_sleep;
+		philo[idx].nb_meals = waiter->nb_meals;
+		philo[idx].start_time = &waiter->start_time;
 		philo[idx].mutex_start = &waiter->start;
 		philo[idx].mutex_print = &waiter->print;
 		philo[idx].mutex_forks_lock = &waiter->forks_lock;
@@ -64,9 +64,9 @@ void	ft_init_waiter(t_waiter *waiter, int argc, char **argv)
 	else
 		waiter->nb_meals = INT_MAX;
 	waiter->start_time = 0;
+	waiter->all_alive = true;
 	pthread_mutex_init(&waiter->start, NULL);
 	pthread_mutex_init(&waiter->print, NULL);
 	pthread_mutex_init(&waiter->forks_lock, NULL);
-	waiter->all_alive = true;
 	ft_get_waiter(waiter);
 }

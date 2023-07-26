@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+         #
+#    By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 12:57:00 by gle-roux          #+#    #+#              #
-#    Updated: 2023/07/25 16:45:09 by gwenolalero      ###   ########.fr        #
+#    Updated: 2023/07/26 09:46:48 by gle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ export HELP
 
 # Compiler and flags
 CC		=	gcc
-CFLAGS	= 	-g -Wall -Wextra -Werror 
+CFLAGS	= 	-g -Wall -Wextra -Werror
 #CFLAGS	= 	-fsanitize=address
 #CFLAGS	=	-fsanitize=thread
 
@@ -70,11 +70,11 @@ NAME		=	philo
 SRCS_DIR	=	./src/
 SRCS_LIST	=	initialization.c \
 				main.c \
+				monitoring.c \
 				parsing.c \
 				routine.c \
 				routine_alone.c \
 				utils.c \
-				monitoring.c \
 				utils_print.c \
 				utils_time.c
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_LIST))
