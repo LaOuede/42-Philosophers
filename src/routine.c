@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gle-roux <gle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gwenolaleroux <gwenolaleroux@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 08:25:04 by gle-roux          #+#    #+#             */
-/*   Updated: 2023/07/26 10:05:56 by gle-roux         ###   ########.fr       */
+/*   Updated: 2023/07/26 18:04:18 by gwenolalero      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	*ft_routine_philos(void *arg)
 	pthread_mutex_unlock(philo->mutex_start);
 	philo->last_meal = philo->ms_die;
 	if (!(philo->idx & 1))
-		ft_usleep(philo->ms_eat / 2);
+		ft_usleep(philo->ms_eat / 2000);
 	while (philo->meals < philo->nb_meals)
 	{
 		if (ft_think(philo) == false)
