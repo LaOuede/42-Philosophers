@@ -20,3 +20,14 @@ The aim of the project is to find a soltuion using only threads and mutexes to a
 Go to [42 Québec](https://42quebec.com/) to discover the course ! 👈
 </div>
 
+---
+
+<h3 align="left">What I've learned 📚</h3>
+
+I've acquired a lot of basic knowledge on C programming :
+- Command line parsing
+- Mutexes utilisation
+- Multithreading
+- Error handling
+- Managing memory
+- Testing and debugging
