@@ -31,3 +31,10 @@ I've acquired a lot of basic knowledge on C programming :
 - Error handling
 - Managing memory
 - Testing and debugging
+
+---
+
+<div align="center">
+
+To look at [my next 42 project](https://github.com/LaOuede/42-MiniRT) !
+</div>
