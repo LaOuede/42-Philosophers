@@ -4,10 +4,6 @@
 
 <h1 align=center>Philosophers</h1>
 
-<p align=center>
-Work in progress...
-</p>
-
 <div align=center>
 
 The <b>Philosophers</b> project tackles the [classic dining philosophers problem](https://en.wikipedia.org/wiki/Dining_philosophers_problem) by implementing concurrent programming techniques.
